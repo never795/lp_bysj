@@ -1,5 +1,5 @@
 ﻿<?php
-define("DEBUG",false);
+define("DEBUG",true);
 
 define("IS_RETURN_MSG",true);
 

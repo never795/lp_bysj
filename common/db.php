@@ -190,6 +190,7 @@ class Database{
     }
     public function table($t){
             $this->_table = $t;
+            return $this;
     }
 
     /*
@@ -355,9 +356,11 @@ class Database{
      * @access public
      * @return array 满足查询表达式的特定数据
      * */
-    public function find(){
+    public function find($table=null){
+        if($table!=null) $this->table=$table;
         $option = self::option();
         $sql = 'select * from '.$this->_table.' '.$option;
+        if(DEBUG) echo $sql;
         $search_res = mysqli_query($this->_dbObj,$sql);
         $msg = self::query_handle($search_res);
         return $msg;
@@ -407,7 +410,7 @@ class Database{
             foreach($data as $key=>$value){
                 if(is_array($value)){       //二维数组
                     $tip = 1;
-                    array_push($values,'('.implode(',',array_values($value)).')');
+                    array_push($values,"('".implode("','",array_values($value))."'')");
                     array_push($fields,'('.implode(',',array_keys($value)).')');
                 }else{      //一维数组
                     $tip = 0;
@@ -417,11 +420,12 @@ class Database{
             return false;
         }
         if(!$tip){
-            array_push($values,'('.implode(',',array_values($data)).')');
+            array_push($values,"('".implode("','",array_values($data))."')");
             array_push($fields,'('.implode(',',array_keys($data)).')');
         }
         $this->data['fields'] = $fields[0];
         $this->data['values'] = implode(',',$values);
+
         return $this;
     }
     /*
@@ -429,10 +433,14 @@ class Database{
      * @access public
      * @return mixed 数据库新增信息
      * */
-    public function add(){
+    public function add($table=null){
+        if($table) $this->_table=$table;
         $fields = $this->data['fields'];
         $values = $this->data['values'];
         $sql = 'INSERT INTO '.$this->_table.$fields.'VALUES'.$values;
+
+        if(DEBUG) echo $sql;
+
         $res = mysqli_query($this->_dbObj,$sql);
         return $res;
     }
@@ -446,13 +454,14 @@ class Database{
         $tip = array();
         if(is_array($data)){
             foreach($data as $key=>$value){
-                array_push($tip,"$key=$value");
+                array_push($tip,"$key='$value'");
             }
         }else{
             return false;
         }
         $set_msg = implode(',',$tip);
         $sql = 'UPDATE '.$this->_table.' SET '.$set_msg.' WHERE '.$this->options['where'];
+        if(DEBUG) echo $sql;
         $res = mysqli_query($this->_dbObj,$sql);
         return $res;
     }
@@ -518,9 +527,17 @@ class Database{
     }
 }
 
+
+
 class db{
-    public $D = null;
+   public $D = null;
     public function __construct(){
-            $this->D = new Database("127.0.0.1","root","root","lp_bysj");; 
+         $this->D = new Database("127.0.0.1","root","root","lp_bysj");
+            if(isset($GLOBALS['db'])){
+                $this->D = $GLOBALS['db'];
+            }else{
+                $this->D = new Database("127.0.0.1","root","root","lp_bysj");
+                $GLOBALS['db'] = $this->D;
+            }          
     }
 }

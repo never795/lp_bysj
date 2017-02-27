@@ -8,7 +8,6 @@ include "common/params.php" ;
 include "common/db.php" ;
 
 
-$GLOBALS['db'] = new Database("127.0.0.1","root","root","lp_bysj");
 
 $code = @$_REQUEST["code"];
 

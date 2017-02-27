@@ -28,11 +28,8 @@ class UserLogin extends db {
 		}
 	} 
 
-	public function register($userName,$pass,$phone,$email){
-			$sql = "insert into ".t_login." (username,password,phone_number,ID_number)
-			values('$userName','$pass','$phone','$email')
-			" ;
-			$res =  $this->D->query($sql);
+	public function register($arr){
+			$res =  $this->D->data($arr)->add(t_login);
 			if($res){
 				return $res;
 			}else{
@@ -55,7 +52,13 @@ class UserLogin extends db {
 		}
 	}
 
-
+	public function update($arr,$where){
+		if($this->D->table(t_login)->where($where)->save($arr)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
 
 
@@ -63,39 +66,56 @@ class UserLogin extends db {
 
 	
 	$type=get($GLOBALS[PARAMS]['TYPE']);
-
+	$_user = is_login();
 	$L = new UserLogin();
 	if($type == 1){ //登陆
-		$_user = is_login();
-			if($_user){
-				returnJson(5,$_user);
-			}
-
+		if($_user){
+			returnJson(5,$_user);
+		}
 		$L->login(get($GLOBALS[PARAMS]['userName']),get($GLOBALS[PARAMS]['passWord']));
 	}else if($type == 2){//注册
 		$L->getInfoByuserName(get($GLOBALS[PARAMS]['userName']));
 		if($L->havaUser){
 			returnJson(3);
 		}else{
-			if($L->register(get($GLOBALS[PARAMS]['userName']),get($GLOBALS[PARAMS]['passWord']),get($GLOBALS[PARAMS]['userPhone']),get($GLOBALS[PARAMS]['userEmail']))){
+			$arr =  array();
+			$arr['username'] = get($GLOBALS[PARAMS]['userName']);
+			$arr['password'] = get($GLOBALS[PARAMS]['passWord']);
+			$arr['phone_number'] = get($GLOBALS[PARAMS]['userPhone']);
+			$arr['ID_number'] = get($GLOBALS[PARAMS]['userEmail']);
+				
+			if($L->register($arr)){
 				returnJson(0);
 			}else{
 				returnJson(4);
 			}
 		}
-	}else if($type == 3){
+	}else if($type == 3){//判断是否存在用户
 		$L->getInfoByuserName(get($GLOBALS[PARAMS]['userName']));
 		if($L->havaUser){
 			returnJson(3);
 		}else{
 			returnJson(6);
 		}
-	}else if($type == 4){
-		$_user = is_login();
+	}else if($type == 4){//注销
 		if($_user){
 			session_destroy(); 
 		}
 		returnJson(7);
+	}else if($type == 5){//更新
+		if(!$_user) returnJson(8);
+		    $arr =  array();
+			$arr['username'] = get($GLOBALS[PARAMS]['userName']);
+			$arr['password'] = get($GLOBALS[PARAMS]['passWord']);
+			$arr['phone_number'] = get($GLOBALS[PARAMS]['userPhone']);
+			$arr['ID_number'] = get($GLOBALS[PARAMS]['userEmail']);
+		if($L->update($arr,"login_id=".$_user['login_id'])){
+			returnJson(10);
+		}else{
+			returnJson(11);
+		}
+	}else{ //其他登陆
+		$L->login(get($GLOBALS[PARAMS]['userName']),get($GLOBALS[PARAMS]['passWord']));
 	}
 
 

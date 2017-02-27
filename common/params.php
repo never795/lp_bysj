@@ -10,7 +10,15 @@
 	'userName'=>'userName',
 	'passWord'=>'passWord',
 	'userPhone'=>'userPhone',
-	'userEmail'=>'userEmail'
+	'userEmail'=>'userEmail',
+	'now_addr'=>'now_addr',
+	'worktime'=>'worktime',
+	'land'=>'land',
+	'jtkn'=>'jtkn',
+	'knqk'=>'knqk',
+	'lset'=>'lset',
+	'lslr'=>'lslr'
+
 );
 
  function paramsTojs(){
