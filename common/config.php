@@ -16,5 +16,6 @@ define("SESSION_USER","lp_user");
 define("t_login","login"); //登陆
 
 define("t_info","common"); //登陆
-
+define("t_gonggao","gonggao"); //登陆
+define("t_fujian","fujian"); //登陆
 

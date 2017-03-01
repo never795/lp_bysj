@@ -1,11 +1,20 @@
 <?php 
 
 /*
-宸﹁竟绯荤粺浣跨敤鍙橀噺鍙宠竟鍓嶅彴浣跨敤鐨勫彉閲忥紝寤鸿涓嶄竴鏍凤紝鏇村姞瀹夊叏
+左边系统使用变量右边前台使用的变量，建议不一样，更加安全
 */
  $GLOBALS[PARAMS] = array(
 	'CODE'=>'code',
-	'TYPE'=>'TYPE',
+	'TYPE'=>'type',
+	'id'=>'id',
+	'1'=>'1',
+	'2'=>'2',
+	'3'=>'3',
+	'4'=>'4',
+	'5'=>'5',
+	'6'=>'6',
+	'7'=>'7',
+	'8'=>'8',
 	'verliCode'=>'verliCode',
 	'userName'=>'userName',
 	'passWord'=>'passWord',
@@ -18,6 +27,7 @@
 	'knqk'=>'knqk',
 	'lset'=>'lset',
 	'lslr'=>'lslr'
+
 
 );
 

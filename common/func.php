@@ -14,7 +14,7 @@ function get($c){
 	
 }
 
-function returnJson($code=-1,$data=null){
+function returnJson($code=-1,$data=null,$other=""){
 	$res = array('data'=>0,'code'=>-1);
 	if(IS_RETURN_MSG){
 			$res['data'] = $data;
@@ -24,7 +24,9 @@ function returnJson($code=-1,$data=null){
 			$res['data'] = $data;
 			$res['code'] = $code;
 	}
-
+	if($other){
+		$res['other'] = $other;
+	}
 		
 
 	$callBack = @$_REQUEST['callBack'];

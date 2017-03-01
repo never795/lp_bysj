@@ -382,7 +382,7 @@ class Database{
      * @return object $this
      * */
     public function limit($limit){
-        $this->options['limit'] = self::options_handle($limit);
+        $this->options['limit'] = $limit;
         return $this;
     }
     /*
@@ -403,7 +403,7 @@ class Database{
      * @param array $data 需要插入的数据
      * @return object $this
      * */
-    public function data(array $data){
+    public function data($data){
         $values = array();
         $fields = array();
         if(is_array($data)){
@@ -442,6 +442,10 @@ class Database{
         if(DEBUG) echo $sql;
 
         $res = mysqli_query($this->_dbObj,$sql);
+        if($res){
+            $res = self::query_handle(mysqli_query($this->_dbObj,"SELECT LAST_INSERT_ID()"));
+            $res = $res[0]['LAST_INSERT_ID()'];
+        }
         return $res;
     }
     /*
@@ -470,8 +474,10 @@ class Database{
      * @access public
      * @return mixed 数据库删除信息
      * */
-    public function delete(){
+    public function delete($table =null){
+        if($table) $this->_table = $table;
         $sql = 'DELETE FROM '.$this->_table.' WHERE '.$this->options['where'];
+        if(DEBUG) echo $sql;
         $res = mysqli_query($this->_dbObj,$sql);
         return $res;
     }
@@ -483,7 +489,7 @@ class Database{
         return $search_res;
     }
 
-       public function querys($sql){
+    public function querys($sql){
          $search_res = mysqli_query($this->_dbObj,$sql);
         if($search_res){
             $table_msg = self::query_handle($search_res);
@@ -494,6 +500,14 @@ class Database{
             mysqli_free_result($search_res);
             return false;
         }
+    }
+
+    public function count($table=null){
+        if($table) $this->_table = $table;
+        $sql = 'SELECT count(*) allPage FROM '.$this->_table.' WHERE '.$this->options['where'];
+        if(DEBUG) echo $sql;
+        $res = self::query_handle(mysqli_query($this->_dbObj,$sql));
+        return  $res[0];
     }
     /*
      * mysql中查询语句
@@ -532,7 +546,7 @@ class Database{
 class db{
    public $D = null;
     public function __construct(){
-         $this->D = new Database("127.0.0.1","root","root","lp_bysj");
+        // $this->D = new Database("127.0.0.1","root","root","lp_bysj");
             if(isset($GLOBALS['db'])){
                 $this->D = $GLOBALS['db'];
             }else{

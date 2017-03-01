@@ -18,6 +18,9 @@ switch ($code) {
 	case '111':
 		include "app/CommonInfo.php" ;
 		break;
+	case '112':
+		include "app/gonggao.php" ;
+		break;
 	case '-1':
 		tojs();
 		break;
