@@ -111,10 +111,12 @@ if($type==1){//获取单条
       $arr = explode(",",$ids);
       foreach($arr as $u){
         $F->update($gg_id,$u);
-      }   
+      } 
+    returnJson(0); 
+  }else{
+    returnJson(-1);
   }
 
-returnJson(0);
 }else{
   $id=get($GLOBALS[PARAMS]['id']);
   $res = $G->info($id);

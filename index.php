@@ -21,6 +21,11 @@ switch ($code) {
 	case '112':
 		include "app/gonggao.php" ;
 		break;
+
+
+	case '222':
+		include "app/file.php" ;
+		break;
 	case '-1':
 		tojs();
 		break;
@@ -31,6 +36,8 @@ switch ($code) {
 		loog($_SESSION);
 		break;
 	default:
+		$date =  date("Ymd");
+        echo $date;
 		loog($_REQUEST);
 		break;
 }
