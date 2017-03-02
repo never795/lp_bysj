@@ -17,5 +17,12 @@ class dayi extends db{
 		return  $this->D->table(t_dayi)->where->($where)->delete();	
 	}
 
-
 }
+
+$dayi = array();
+$dayi['login_id']
+$dayi['cousult']
+$dayi['answer']
+$dayi['dy_time']
+$dayi['huifuzt']
+$dayi['dy_remaker']

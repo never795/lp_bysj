@@ -26,4 +26,8 @@ define("t_login","login"); //登陆
 define("t_info","common"); //用户信息
 define("t_gonggao","gonggao"); //公告
 define("t_fujian","fujian"); //附件
-
+define("t_job","job"); //附件
+define("t_dayi","dayi"); //登陆
+define("t_town","town"); //用户信息
+define("t_work","workerinfo"); //公告
+define("t_zhaopin","zhaopin"); //附件

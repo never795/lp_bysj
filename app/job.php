@@ -19,3 +19,15 @@ class job extends db{
 
 
 }
+
+
+$job = array();
+$job[' job_hangye']
+$job[' baoxian']
+$job[' bx_type']
+$job[' ldht']
+$job[' yuexin']
+$job[' return_work']
+$job[' return_chuangye']
+$job[' job_train']
+$job[' train_type']
