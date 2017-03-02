@@ -20,8 +20,8 @@ class town extends db{
 }
 
 $town = array();
-$town['news']
-$town['news_title']
-$town['news_zy']
-$town['publish_time']
-$town['town_remark']
+$town['news']=get($GLOBALS[PARAMS]['1']);
+$town['news_title']=get($GLOBALS[PARAMS]['2']);
+$town['news_zy']=get($GLOBALS[PARAMS]['3']);
+$town['publish_time']=get($GLOBALS[PARAMS]['4']);
+$town['town_remark']=get($GLOBALS[PARAMS]['5']);

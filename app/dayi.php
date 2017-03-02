@@ -20,9 +20,9 @@ class dayi extends db{
 }
 
 $dayi = array();
-$dayi['login_id']
-$dayi['cousult']
-$dayi['answer']
-$dayi['dy_time']
-$dayi['huifuzt']
-$dayi['dy_remaker']
+$dayi['login_id']=get($GLOBALS[PARAMS]['1']);
+$dayi['cousult']=get($GLOBALS[PARAMS]['2']);
+$dayi['answer']=get($GLOBALS[PARAMS]['3']);
+$dayi['dy_time']=get($GLOBALS[PARAMS]['4']);
+$dayi['huifuzt']=get($GLOBALS[PARAMS]['5']);
+$dayi['dy_remaker']=get($GLOBALS[PARAMS]['6']);

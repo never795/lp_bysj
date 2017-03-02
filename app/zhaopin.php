@@ -20,13 +20,13 @@ class zhaopin extends db{
 }
 
 $zhaopin =array();
-$zhaopin['zpfbh']
-$zhaopin['zpf_name']
-$zhaopin['zp_post']
-$zhaopin['zp_require']
-$zhaopin['zp_renshu']
-$zhaopin['pay_rule']
-$zhaopin['zp_start']
-$zhaopin['zp_end']
-$zhaopin['work_time']
-$zhaopin['zp_remark']
+$zhaopin['zpfbh'] = get($GLOBALS[PARAMS]['1']);
+$zhaopin['zpf_name']=get($GLOBALS[PARAMS]['2']);
+$zhaopin['zp_post']=get($GLOBALS[PARAMS]['3']);
+$zhaopin['zp_require']=get($GLOBALS[PARAMS]['4']);
+$zhaopin['zp_renshu']=get($GLOBALS[PARAMS]['5']);
+$zhaopin['pay_rule']=get($GLOBALS[PARAMS]['6']);
+$zhaopin['zp_start']=get($GLOBALS[PARAMS]['7']);
+$zhaopin['zp_end']=get($GLOBALS[PARAMS]['8']);
+$zhaopin['work_time']=get($GLOBALS[PARAMS]['9']);
+$zhaopin['zp_remark']=get($GLOBALS[PARAMS]['0']);
