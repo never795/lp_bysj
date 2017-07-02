@@ -31,3 +31,4 @@ define("t_dayi","dayi"); //登陆
 define("t_town","town"); //用户信息
 define("t_work","workerinfo"); //公告
 define("t_zhaopin","zhaopin"); //附件
+

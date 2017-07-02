@@ -3,32 +3,31 @@
 
 /*获取参数*/
 function get($c){
-	if(!in_array($c,$GLOBALS[PARAMS])){
-		exit($GLOBALS['error'][9998].$c);
-	}
 	if(isset($_REQUEST[$c])){
 		return $_REQUEST[$c];
 	}else{
 		exit($GLOBALS['error'][9999].$c);
 	}
-	
 }
 
-function returnJson($code=-1,$data=null,$other=""){
-	$res = array('data'=>0,'code'=>-1);
-	if(IS_RETURN_MSG){
-			$res['data'] = $data;
-			$res['code'] = $code;
-			$res['msg'] = $GLOBALS['error'][$code];	
-	}else{
-			$res['data'] = $data;
-			$res['code'] = $code;
+function returnJson($code=-1,$data="",$other=""){
+	if(is_array($code)){
+		$data = $code;
+		$code = 0;
+	}else if($code === true){
+		$code = 0;
+	}else if($code === false){
+		$code = -1;
 	}
+	$res = array();
+	$res['code'] = $code;
+	$res['msg'] = $GLOBALS['error'][$code];	
 	if($other){
 		$res['other'] = $other;
 	}
-		
+	$res['data'] = $data;
 
+	$res['sql'] = $GLOBALS["sql"]; 
 	$callBack = @$_REQUEST['callBack'];
 	if($callBack){
 		echo $callBack.'('.json_encode($res).')';
@@ -63,3 +62,4 @@ function get_session($d){
 function set_session($d,$c){
 	 $_SESSION[$c] = $d;
 }
+

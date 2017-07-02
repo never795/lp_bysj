@@ -1,124 +1,74 @@
 <?php
-class UserLogin extends db {
-	public $havaUser = false;
-	public $pass = "";
-	public $id = "";
 
-	public function getInfoByuserName($userName){
-		
-		$sql = "
-			select * from ".t_login." where username='$userName'
-		";
-		$res =  $this->D->querys($sql);
-		if(count($res)==1){
-		 	$this->havaUser = true;
-		 	$this->pass = $res[0]['password'];
-		 	$this->id = $res[0]['login_id'];
-		 	return $res[0];	
-		}else{
-			return false;
-		} 	
+class login extends db{
+	protected $table_user = "lp_user";
+	protected $table_role = "lp_role";
+	protected $table_menu = "lp_menu";
+	protected $table_part = "part";
+	protected $_user=null;
+
+	protected function menu(){
+		$sql ="
+		select * from lp_menu m
+		inner join lp_role_menu rm on m.menu_id=rm.lp_menu_id
+		where m.lp_menu_show=1 and rm.lp_role_id='".$this->_user['user']['lp_role']."' order by m.lp_menu_post";
+		$res = $this->D->query($sql);
+		return $this->bmenu($res);
 	}
-
-	public function comparePass($pass){
-		if($pass == $this->pass){
-			return true;
-		}else{
-			return false;
-		}
-	} 
-
-	public function register($arr){
-			$res =  $this->D->data($arr)->add(t_login);
-			if($res){
-				return $res;
+	
+	public function logins($user,$pwd){
+		$sql="select * from lp_user u left join lp_role r on r.role_id=u.lp_role left join part p on p.p_id=u.lp_ext where u.lp_username='".$user."'";
+		$res =  $this->D->query($sql);
+		if(count($res)==1){
+			if($res[0]['lp_password'] == $pwd){
+				$res[0]['lp_password'] = "******";
+				$this->_user['user'] = $res[0];
+		 		$this->_user['menu'] =$this->menu();
+		 		set_session($this->_user,SESSION_USER);
 			}else{
-				false;
+				returnJson(1);
 			}
-	} 
-
-	public function login($userName,$pass){
-		$res = $this->getInfoByuserName($userName);
-		if($res ){
-			if($this->comparePass($pass)){
-				set_session($res,SESSION_USER);
-				$res['password'] = null;
-				returnJson(0,$res);
-			}else{
-				returnJson(2);
-			}
+		 		
 		}else{
 			returnJson(2);
 		}
+	    returnJson(0,$this->_user);
 	}
 
-	public function update($arr,$where){
-		if($this->D->table(t_login)->where($where)->save($arr)){
-			return true;
-		}else{
-			return false;
-		}
-	}
-}
-
-
-
-
-	
-	$type=get($GLOBALS[PARAMS]['TYPE']);
-	$_user = is_login();
-	$L = new UserLogin();
-	if($type == 1){ //登陆
-		if($_user){
-			returnJson(5,$_user);
-		}
-		$L->login(get($GLOBALS[PARAMS]['userName']),get($GLOBALS[PARAMS]['passWord']));
-	}else if($type == 2){//注册
-		$L->getInfoByuserName(get($GLOBALS[PARAMS]['userName']));
-		if($L->havaUser){
-			returnJson(3);
-		}else{
-			$arr =  array();
-			$arr['username'] = get($GLOBALS[PARAMS]['userName']);
-			$arr['password'] = get($GLOBALS[PARAMS]['passWord']);
-			$arr['phone_number'] = get($GLOBALS[PARAMS]['userPhone']);
-			$arr['ID_number'] = get($GLOBALS[PARAMS]['userEmail']);
-				
-			if($L->register($arr)){
-				returnJson(0);
+	//根据A_A_A方式构建菜单
+public function bmenu($res){
+	if(!is_array($res)) return array();
+	$menu = array();
+	for ($i=0; $i < count($res); $i++) { 
+		$chindle=&$menu;
+		$menu_post=explode("_",$res[$i]['lp_menu_post']); 
+		$lastPost = "";
+		for ($j=0; $j < count($menu_post); $j++) { 
+			if($j==0){
+				$lastPost = $menu_post[$j];//
 			}else{
-				returnJson(4);
+				$lastPost .= "_".$menu_post[$j];
+			}
+			for ($k=0; $k <count($chindle) ; $k++) { 
+				if(isset($chindle[$k]['post'])){
+					if($chindle[$k]['post']== $lastPost){
+						$chindle = &$chindle[$k]['children'];
+						break;
+					}
+				}
 			}
 		}
-	}else if($type == 3){//判断是否存在用户
-		$L->getInfoByuserName(get($GLOBALS[PARAMS]['userName']));
-		if($L->havaUser){
-			returnJson(3);
-		}else{
-			returnJson(6);
-		}
-	}else if($type == 4){//注销
-		if($_user){
-			session_destroy(); 
-		}
-		returnJson(7);
-	}else if($type == 5){//更新
-		if(!$_user) returnJson(8);
-		    $arr =  array();
-			$arr['username'] = get($GLOBALS[PARAMS]['userName']);
-			$arr['password'] = get($GLOBALS[PARAMS]['passWord']);
-			$arr['phone_number'] = get($GLOBALS[PARAMS]['userPhone']);
-			$arr['ID_number'] = get($GLOBALS[PARAMS]['userEmail']);
-		if($L->update($arr,"login_id=".$_user['login_id'])){
-			returnJson(10);
-		}else{
-			returnJson(11);
-		}
-	}else{ //其他登陆
-		$L->login(get($GLOBALS[PARAMS]['userName']),get($GLOBALS[PARAMS]['passWord']));
-	}
-
-
-
-
-
+		$tempc=array();
+		$tempc['post'] = $res[$i]['lp_menu_post'];
+		$tempc['id'] = $res[$i]['menu_Id'];
+		$tempc['name'] =$res[$i]['lp_menu_name']; 
+		$tempc['href'] =$res[$i]['lp_menu_url'];
+		$tempc['children'] =array();  
+		array_push($chindle,$tempc);
+	}	
+	return $menu;
+}
+}
+$l = new login();
+$l->logins(get("u"),get("p"));
+?>
