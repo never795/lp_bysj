@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="stylesheet" href="../common/layui/css/layui.css">
+    <title>新闻列表</title>
+    
+  </head>
+<body>
+	
+<blockquote class="layui-elem-quote">
+  提示：共有<input id="allpage" style="width:40px" disabled="disabled" />文章<button id="flush">刷新</button>
+</blockquote>
+<table class="layui-table" lay-skin="line">
+  <colgroup>
+    <col width="150">
+    <col width="150">
+    <col width="200">
+    <col>
+  </colgroup>
+  <thead >
+    <tr>
+      <th>序号</th>
+      <th>用户名</th>
+      <th>性别</th>
+      <th>手机号码</th>
+      <th>证件号码</th>
+      <th>操作</th>
+    </tr> 
+  </thead>
+  <tbody id="list">
+    <tr>
+      <td>贤心</td>
+      <td>汉族</td>
+      <td>1989-10-14</td>
+      <td>人生似修行</td>
+    </tr>
+    
+  </tbody>
+</table>
+<div id="page"></div>
+</body>
+</html>
+<script src = "../common/layui/layui.js" charset = "utf-8" > </script> 
+<script >
+var code=115;
+var id = null;
+  layui.use(['laypage', 'layer'], function() {
+    var laypage = layui.laypage,
+      layer = layui.layer;
+    $ = layui.jquery;
+
+    var pageSize = 10;
+    init();
+
+    function init() {
+      initpage("page",10);
+      page(0);
+    }
+
+
+    function page(p) {
+      console.log("请求第"+p+"条开始");
+      $.ajax({
+        url: '../../index.php?id=1&code='+code+'&type=2&b=' + p + "&l=" + pageSize,
+        success: function(res) {
+          res =toObj(res);
+          if (res.code == 0) {
+            $("#allpage").val(res.other.allPage);
+            var html = "";
+            var list = res.data;
+            $("#list").empty();
+            for (var i = 0; i < list.length; i++) {
+              html = '<tr class="userlist" >' 
+                  +'<th>'+list[i].login_id+'</th>'
+                  +'<th>'+list[i].username+'</th>'
+                  +'<th>'+list[i].sex+'</th>'
+                  +'<th>'+list[i].phone_number+'</th>'
+                  +'<th>'+list[i].ID_number+'</th><th>'
+                 +'<button class="base" data="'+list[i].login_id+'">基本信息</button>'
+                 +'<button class="common" data="'+list[i].login_id+'">常用信息</button>'
+                 +'<button class="work" data="'+list[i].login_id+'">工作信息</button>'
+                  +'</th></tr>';
+
+              $("#list").append(html);
+            }
+          } else {
+            layer.msg('没有更多数据！');
+          }
+          $(".userlist").click(function(event) {
+            $(this).css("background-color","#3999D4").siblings('tr').css("background-color","");
+          });
+          $(".base").click(function(event) {
+            var id = $(this).attr("data");
+             del("base.html#"+id);
+          });
+          $(".common").click(function(event) {
+              var id = $(this).attr("data");
+              del("job.html#"+id);
+          });
+          $(".work").click(function(event) {
+             var id = $(this).attr("data");
+              del("work.html#"+id);
+          });
+        }
+      })
+
+    }
+
+   //分页监听
+      function initpage(domPage,pageSize){
+          var P  = setInterval(function(){
+          var allPage = parseInt($("#allpage").val());
+          if(allPage>=0){
+              if(allPage%pageSize == 0){
+                allPage = parseInt(allPage/pageSize);
+              }
+              else{
+                allPage = parseInt(allPage/pageSize)+1;
+              }
+               laypage({
+                cont:domPage,
+                pages: allPage,
+                jump: function(obj, first) {
+                  if (!first) {
+                    if(allPage>=obj.curr)
+                      page((obj.curr-1)*pageSize);
+                    else{
+                       layer.msg('超过总页数');
+                       return ;
+                    }
+                  }
+                }
+              });
+            clearInterval(P);  
+          }
+        },1000);  
+
+        
+      }
+    function initallpage(p){
+     
+    }
+
+    function del(url) {
+      //iframe窗
+      layer.open({
+        type: 2,
+        title: 'layer mobile页',
+        shadeClose: true,
+        shade: 0.8,
+        area: ['70%', '90%'],
+        content: url //iframe的url
+      });
+    }
+      //刷新
+    $("#flush").click(function(event) {
+     init()
+    });
+
+
+
+  });
+</script>

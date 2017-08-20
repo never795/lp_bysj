@@ -1,0 +1,168 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="stylesheet" href="../common/layui/css/layui.css">
+    <title>新闻列表</title>
+    
+  </head>
+<body>
+	
+<blockquote class="layui-elem-quote">
+  提示：共有<input id="allpage" style="width:40px" disabled="disabled" />文章<button id="flush">刷新</button>
+</blockquote>
+<table class="layui-table" lay-skin="line">
+  <colgroup>
+    <col width="150">
+    <col width="150">
+    <col width="200">
+    <col>
+  </colgroup>
+  <thead >
+    <tr>
+      <th>序号</th>
+      <th>标题</th>
+      <th>时间</th>
+      <th>作者</th>
+      <th>点击量</th>
+      <th>类型</th>
+      <th>操作</th>
+    </tr> 
+  </thead>
+  <tbody id="list">
+    <tr>
+      <td>贤心</td>
+      <td>汉族</td>
+      <td>1989-10-14</td>
+      <td>人生似修行</td>
+    </tr>
+    
+  </tbody>
+</table>
+<div id="page"></div>
+</body>
+</html>
+<script src = "../common/layui/layui.js" charset = "utf-8" > </script> 
+<script >
+var code=112;
+  layui.use(['laypage', 'layer'], function() {
+    var laypage = layui.laypage,
+      layer = layui.layer;
+    $ = layui.jquery;
+
+    var pageSize = 10;
+    init();
+
+    function init() {
+      initpage("page",10);
+      page(0);
+    }
+
+
+    function page(p) {
+      console.log("请求第"+p+"条开始");
+      $.ajax({
+        url: '../../index.php?code='+code+'&type=2&b=' + p + "&l=" + pageSize,
+        success: function(res) {
+          res = eval("(" + res + ")");
+          if (res.code == 0) {
+            $("#allpage").val(res.other.allPage);
+            var html = "";
+            var list = res.data;
+            $("#list").empty();
+            for (var i = 0; i < list.length; i++) {
+              html = '<tr>' + '<th>' + list[i].gg_id + '</th>' + '<th>' + list[i].gg_name + '</th>' + '<th>' + list[i].gg_time + '</th>' + '<th>' + list[i].gg_source + '</th>' +'<th>' + list[i].gg_fwrs + '</th>'  +'<th>'+lx(list[i].type)+'</th>'+ '<th><span id="del" data="' + list[i].gg_id + '">删除</span></th>' + '</tr>';
+              $("#list").append(html);
+            }
+          } else {
+            layer.msg('没有更多数据！');
+          }
+          del();
+        }
+      })
+
+    }
+
+   //分页监听
+      function initpage(domPage,pageSize){
+          var P  = setInterval(function(){
+          var allPage = parseInt($("#allpage").val());
+          if(allPage>=0){
+              if(allPage%pageSize == 0){
+                allPage = parseInt(allPage/pageSize);
+              }
+              else{
+                allPage = parseInt(allPage/pageSize)+1;
+              }
+               laypage({
+                cont:domPage,
+                pages: allPage,
+                jump: function(obj, first) {
+                  if (!first) {
+                    if(allPage>=obj.curr)
+                      page((obj.curr-1)*pageSize);
+                    else{
+                       layer.msg('超过总页数');
+                       return ;
+                    }
+                  }
+                }
+              });
+            clearInterval(P);  
+          }
+        },1000);  
+
+        
+      }
+    function initallpage(p){
+     
+    }
+
+    function del() {
+      /*删除*/
+      $("#del").click(function(event) {
+        var id = $(this).attr("data");
+        if (!id) return;
+        layer.confirm('确定删除？', {
+          btn: ['确定', '取消'] //可以无限个按钮
+        }, function(index, layero) { //确定回调
+
+          $.ajax({
+            url: '../../index.php?code='+code+'&type=21&id=' + id,
+            success: function(res) {
+              res = toObj(res);
+              if (res.code == 0) {
+                page(0);
+              } else {
+               alert("删除失败")
+              }
+
+            }
+          });
+          layer.close(index);
+        });
+      });
+    }
+      //刷新
+    $("#flush").click(function(event) {
+     init()
+    });
+
+    function lx(d){
+      if(d == 1){
+        return "新闻";
+      }else if(d == 2){
+        return "法律";
+      }else{
+        return "未归属";
+      }
+    }
+
+  });
+</script>
