@@ -4,6 +4,7 @@ define("DEBUG",true);
 define("IS_RETURN_MSG",true);
 //是否需要验证码
 define("VERLICODE",false);
+define("VERLICODE_CODE","_lp_verlicode");
 
 
 

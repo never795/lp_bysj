@@ -40,7 +40,7 @@ class login extends db{
 }
 
 $l = new login();
-$l->logins($get("u"),$get("p"));
+$l->logins(get("u"),get("p"));
 
 
 ?>

@@ -63,11 +63,16 @@ public function bmenu($res){
 		$tempc['id'] = $res[$i]['menu_Id'];
 		$tempc['name'] =$res[$i]['lp_menu_name']; 
 		$tempc['href'] =$res[$i]['lp_menu_url'];
-		$tempc['children'] =array();  
+		$tempc['childrens'] =array();  
 		array_push($chindle,$tempc);
 	}	
 	return $menu;
 }
+}
+if(VERLICODE){
+	if(!check_vercode(get("v"))){
+		returnJson(10000);
+	}
 }
 $l = new login();
 $l->logins(get("u"),get("p"));

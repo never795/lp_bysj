@@ -103,3 +103,4 @@ class Img{
 
 $a = new Img();
 $a->img();
+exit();

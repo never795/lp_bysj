@@ -12,8 +12,16 @@ include "common/jdbc.php" ;
 $code = @$_REQUEST["code"];
 
 switch ($code) {
+	case 'needImg'://仅仅登陆
+		
+		returnJson(0,VERLICODE);
+		break;
+
 	case 'login'://仅仅登陆
 		include "app/login.php" ;
+		break;
+	case 'img'://仅仅登陆
+		include "common/image.php" ;
 		break;
 	case 'loginOut'://退出登录
 		if(is_login()){
