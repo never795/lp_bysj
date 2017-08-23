@@ -36,9 +36,9 @@
 					<input type="password" id="password" name="password" lay-verify="password" autocomplete="off" placeholder="这里输入密码" class="layui-input">
 				</div>
         
-        <div class="layui-form-item">
-          <input type="password" name="picture" lay-verify="password" autocomplete="off" placeholder="验证码" class="layui-input" style=" width: 150px;float: left;">
-          <div class="pull-right" style="cursor: pointer;" onclick="this.children[0].src='http://192.168.8.105/common/picture/image.php'">
+        <div class="layui-form-item" id="imagsblock">
+          <input id="imgCode" type="password" name="picture" lay-verify="password" autocomplete="off" placeholder="验证码" class="layui-input" style=" width: 150px;float: left;">
+          <div class="pull-right" style="cursor: pointer;">
            <img id="imgs" src="http://192.168.8.105/common/picture/image.php" />
           </div>
           <div class="clear"></div>

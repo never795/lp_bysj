@@ -436,6 +436,8 @@ $(function(){
 				// 	]}
 				// ]}
 				];
+
+	menu = lp.getdata("menu");
 	initMenu(menu,$(".side-menu"));
 	$(".side-menu > li").addClass("menu-item");
 	

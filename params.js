@@ -1,1 +1,0 @@
-var error ={"CODE":"code","TYPE":"TYPE","verliCode":"verliCode","userName":"userName","passWord":"passWord","userPhone":"userPhone","userEmail":"userEmail"}

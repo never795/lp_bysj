@@ -1,7 +1,7 @@
 var lp={
 
 };
-lp.url="http://192.168.8.105";
+lp.url="http://192.168.8.100";
 
 
 
@@ -15,9 +15,9 @@ lp.request=function(c,d,s){
 		var url=this.url+"/index.php?code="+code;
 		$.ajax({
 			url:url,
+			type:"POST",
 			dataType : 'jsonp',  
         	jsonp:"callBack", 
-			type:"post",
 			data:data,
 			success:function(d){
 				s(d);
@@ -31,3 +31,19 @@ lp.request=function(c,d,s){
 lp.$=function(s){
 		return document.querySelectorAll(s);
 	}
+
+lp.setdata=function(k,v){
+	if(typeof(v)=="object"){
+		v="ObJ_"+JSON.stringify(v);
+	}
+
+	window.localStorage.setItem(k,v)
+
+}
+lp.getdata=function(kk){
+	var k = window.localStorage.getItem(kk);
+	if(k.indexOf("ObJ_")==0){
+		 k = JSON.parse(k.substring(4));
+	}
+	return k;
+}
