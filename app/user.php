@@ -4,18 +4,37 @@ class user extends db {
 	private $table_user = "lp_user";
 	private $table_role = "lp_role";
 	private $table_part = "part";
-	
+	private $table_menu = "lp_menu";
+	private $table_menu_role = "lp_role_menu";
 
 	public function page($s=0,$l=10){
 		$res = $this->D->table($this->table_user)->page($s,$l);
 		returnJson($res);
 	}
 
-	public function userAdd($add){
-		$res = $this->D->table($this->table_user)->add($add);
+	public function userAdd(){
+		$user=array();
+		$user['lp_username']=get('lp_username');
+		$user['lp_password']=get('lp_password');
+		$user['lp_role']=get('lp_role');
+		if($this->getUserByuserNamw($user['lp_username'])){
+			returnJson(3);
+		}
+		$res = $this->D->table($this->table_user)->add($user);
 		returnJson($res);
 	} 
 
+	public function getUserByuserNamw($u){
+		$res = $this->D->table($this->table_user)->where(" lp_username='".$u."'")->select();
+		return $res;
+	}
+	public function delUser($d){
+		$res = $this->D->table($this->table_user)->where(" user_Id='".$d."'")->delete();
+		
+		returnJson(0,$res);
+		
+
+	}
 	public function update($update){
 		if(!isset($update['user_Id'])){
 			returnJson(9999,"user_Id");
@@ -25,9 +44,29 @@ class user extends db {
 		returnJson($res);
 	}
 
-	public function add($add){
-			$res =  $this->D->table($this->table_user)->add($add);
-			returnJson($res);
+ 	public function addRole(){
+		$role=array();
+		$role['lp_name']=get('n');
+		$role['lp_ext']=get('r');
+		//添加到角色表
+		$res = $this->D->table($this->table_role)->add($role);
+		//关联菜单
+		$men = get('m');
+		$arrayMenu=explode(",",$men); 
+		for ($i=0; $i < count($arrayMenu); $i++) { 
+			if($arrayMenu[$i]){
+				$this->addRoleMenu($arrayMenu[$i],$res);
+			}
+		}
+		returnJson($res);
+	} 
+
+	public function addRoleMenu($m,$r){
+		$role=array();
+		$role['lp_menu_id']=$m;
+		$role['lp_role_id']=$r;
+		//添加到角色表
+		$res = $this->D->table($this->table_menu_role)->add($role);
 	} 
 
 	//userId=1&roleId=1
@@ -35,14 +74,39 @@ class user extends db {
 		$res = $this->D->table($this->table_user)->where("user_Id='".get('userId')."'")->update("lp_role='".get('roleId')."'");
 		returnJson($res);
 	}
-	public function part(){
-		returnJson($this->menu($this->D->table($this->table_part)->select()));
+	public function part($p){
+		returnJson($this->D->table($this->table_part)->where( "p_post like '$p%'")->select());
 	}
 
 	public function partUser($a){
 		$res = $this->D->table($this->table_user)->where("user_Id='".get('userId')."'")->update("lp_ext='".get('partId')."'");
 		returnJson($res);
 	}
+
+	public function roleList(){
+		if(isset($_REQUEST['b'])){
+			$res = $this->D->table($this->table_role)->page(get('b'),get('e'));
+		returnJson($res);
+		}else{
+			$res = $this->D->table($this->table_role)->select();
+		returnJson($res);
+		}
+		
+	}
+
+	public function delRole(){
+		$res = $this->D->table($this->table_role)->where(" role_Id='".get('id')."'")->delete();
+		if($res){
+			returnJson(0);
+		}else{
+			returnJson(-1);
+		}
+		
+	}
+
+
+	
+
 	//根据A_A_A方式构建菜单
 	public function menu($res){
 		if(!is_array($res)) return array();

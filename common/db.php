@@ -489,6 +489,8 @@ class Database{
         return $search_res;
     }
 
+
+
     public function querys($sql){
          $search_res = mysqli_query($this->_dbObj,$sql);
         if($search_res){
@@ -502,12 +504,33 @@ class Database{
         }
     }
 
+
+    public function page(s=0,l=10){
+        $count = $this.count();
+
+        $option = self::option();
+        $sql = 'select * from '.$this->_table.' '.$option;
+        $search_res = mysqli_query($this->_dbObj,$sql);
+        if($search_res){
+            $table_msg = self::query_handle($search_res);
+            $this->_tableObj = $table_msg;
+            mysqli_free_result($search_res);
+            $results = array();
+            $results['data']= $table_msg;
+            $results['allPage']=$count;
+            return $table_msg;
+        }else{
+            mysqli_free_result($search_res);
+            return false;
+        }
+    }
+
     public function count($table=null){
         if($table) $this->_table = $table;
         $sql = 'SELECT count(*) allPage FROM '.$this->_table.' WHERE '.$this->options['where'];
         if(DEBUG) echo $sql;
         $res = self::query_handle(mysqli_query($this->_dbObj,$sql));
-        return  $res[0];
+        return  $res[0].allPage;
     }
     /*
      * mysql中查询语句

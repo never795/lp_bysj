@@ -52,7 +52,7 @@ public function bmenu($res){
 			for ($k=0; $k <count($chindle) ; $k++) { 
 				if(isset($chindle[$k]['post'])){
 					if($chindle[$k]['post']== $lastPost){
-						$chindle = &$chindle[$k]['children'];
+						$chindle = &$chindle[$k]['childMenus'];
 						break;
 					}
 				}
@@ -62,8 +62,9 @@ public function bmenu($res){
 		$tempc['post'] = $res[$i]['lp_menu_post'];
 		$tempc['id'] = $res[$i]['menu_Id'];
 		$tempc['name'] =$res[$i]['lp_menu_name']; 
-		$tempc['href'] =$res[$i]['lp_menu_url'];
-		$tempc['childrens'] =array();  
+		$tempc['url'] =$res[$i]['lp_menu_url'];
+		$tempc['icon']="";
+		$tempc['childMenus'] =array();  
 		array_push($chindle,$tempc);
 	}	
 	return $menu;

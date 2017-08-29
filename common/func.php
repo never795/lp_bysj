@@ -20,10 +20,10 @@ function returnJson($code=-1,$data="",$other=""){
 		$code = -1;
 	}
 	$res = array();
-	$res['code'] = $code;
-	$res['msg'] = $GLOBALS['error'][$code];	
+	$res['code'] = @$code;
+	$res['msg'] = @$GLOBALS['error'][$code];	
 	if($other){
-		$res['other'] = $other;
+		$res['other'] = @$other;
 	}
 	$res['data'] = $data;
 

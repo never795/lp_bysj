@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="stylesheet" href="../common/layui/css/layui.css">
+    <title>添加新闻</title>
+    
+  </head>
+  
+  <body>
+          
+<blockquote class="layui-elem-quote">
+  提示：1
+</blockquote>
+              
+
+<form class="layui-form" action="">
+ 
+
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">年龄</label>
+    <div class="layui-input-block">
+      <input type="text" name="1" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+    </div>
+  </div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">户籍地址</label>
+    <div class="layui-input-block">
+      <input type="text" name="2" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+    </div>
+  </div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">户籍性质</label>
+    <div class="layui-input-block">
+      <input type="text" name="3" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+    </div>
+  </div>
+
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">相片</label>
+    <div class="layui-input-block">
+      <input type="text" name="4" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">出生日期</label>
+    <div class="layui-input-block">
+      <input type="text" name="5" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">政治面貌</label>
+    <div class="layui-input-block">
+      <input type="text" name="6" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">学历</label>
+    <div class="layui-input-block">
+      <input type="text" name="7" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">是否购买住房</label>
+    <div class="layui-input-block">
+      <input type="text" name="8" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">是否回乡建房</label>
+    <div class="layui-input-block">
+      <input type="text" name="9" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+    </div>
+  </div>
+
+  
+
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+</body>
+         
+<script src="../common/layui/layui.js" charset="utf-8"></script>
+
+<script>
+var code = 116;
+
+layui.use(['form', 'layedit', 'laydate','upload'], function(){
+ var layedit = layui.layedit;
+  $ = layui.jquery;
+  var form = layui.form()
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+var id = null;
+init();
+
+function init(){
+  id = window.location.href.substr(window.location.href.indexOf("#")+1);
+  getpage(id)
+}
+
+  var fujian = "";
+  //上传附件
+  layui.upload({
+    url: '../../index.php?code=222',
+   // url:'http://127.0.0.1/lp_bysj/?code=112&type=1&id=1',
+    success: function(res){ //上传成功后的回调
+      console.log(res)
+      if(res.code == 0){
+          var r = res.data[0];
+          if(r){
+            fujian = fujian + r.id+",";
+            $("#fujian").append(r.fj_name);
+            console.log($("#fujian"));
+          }else{
+            layer.msg('附件上传失败');
+          }
+
+      }else{
+        layer.open({
+          title: '提示'
+          ,content: res.msg
+        });
+      }
+    }
+  });
+  
+//编辑器上传
+layedit.set({
+  uploadImage: {
+    url: '../../index.php?code=222' //接口url
+    ,type: '' //默认post
+  }
+});
+layedit.build('demo'); //建立编辑器
+
+
+
+function getpage(id){
+	if(!id) alert("发生位置错误");
+
+	$.ajax({
+		url:'../../index.php?code='+code+'&type=1&id='+id,
+		success:function(res){
+			res = toObj(res);
+			if(res.code == 0){
+				var data = res.data[0];
+				$("[name=1]").val(data['age']);
+        $("[name=2]").val(data['huji_addr']);
+        $("[name=3]").val(data['huji_xingzhi']);
+        $("[name=4]").val(data['photo']);
+        $("[name=5]").val(data['date_birth']);
+        $("[name=6]").val(data['zzmm']);
+        $("[name=7]").val(data['edu']);
+        $("[name=8]").val(data['buy_house']);
+        $("[name=9]").val(data['build_house']);
+			}
+
+		}
+	})
+}
+
+
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    var d = data.field;
+    d.id = id;
+  console.log(d);
+    $.ajax({
+      url:"../../index.php?code="+code+"&type=20",
+      data:d,
+      type:'POST',
+      success:function(res){
+          res = eval("("+res+")");
+          console.log(res);
+          if(res.code==0){
+            layer.msg('成功');
+          }else{
+             layer.msg(res.msg);
+          }
+      }
+    });
+    return false;
+  });
+  
+  
+});
+</script>
+</html>
