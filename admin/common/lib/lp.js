@@ -1,30 +1,52 @@
 var lp={
 
 };
-lp.url="http://192.168.8.100";
 
-
+lp.url="http://127.0.0.1/api";
 
 lp.request=function(c,d,s){
-
-		lp["call_"+c]=s;
-
 		var code =c || 110;
 		var data = d||{};
 		var s = s || function(e){console.log(e)}
 		var url=this.url+"/index.php?code="+code;
-		$.ajax({
-			url:url,
-			type:"POST",
-			dataType : 'jsonp',  
-        	jsonp:"callBack", 
-			data:data,
-			success:function(d){
-				s(d);
-			}
-	});
+		if(url.indexOf("127.0.0.1")==-1){
+			$.ajax({
+				url:url,
+				type:"POST",
+				dataType : 'jsonp',  
+	        	jsonp:"callBack", 
+				data:data,
+				success:function(d){
+					try{
+						console.log(res);
+						s(d);
+					}catch(e){
+						lp.error(e)
+					}
+				}
+			});
+		}else{
+			$.ajax({
+				url:url,
+				type:"POST", 
+				data:data,
+				success:function(d){
+					try{
+						var res = eval("("+d+")");
+						console.log(res);
+						s(res);
+					}catch(e){
+						lp.error(e)
+					}
+					
+				}
+			});
+		}
 };
 
+lp.error=function(e){
+	console.err(e)
+}
 
 
 

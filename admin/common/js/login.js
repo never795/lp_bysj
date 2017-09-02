@@ -27,13 +27,12 @@ $(function(){
 		data.p=p;
 		data.v=imgCode;
 		lp.request("login",data,function(r){
-				console.log(r);
 				if (r.code!=0){
 					alert(r.msg);
 				} else{
-
+					lp.setdata("user",r.data.user) 
 					lp.setdata("menu",r.data.menu) 
-					//document.location.href="page/index.html"
+					document.location.href="page/index.html"
 				}
 		});
 	}
