@@ -4,6 +4,7 @@ define("DEBUG",true);
 define("IS_RETURN_MSG",true);
 //是否需要验证码
 define("VERLICODE",false);
+define("VERLICODE_CODE","_lp_verlicode");
 
 
 
@@ -23,6 +24,7 @@ define("FILE_SIZE",1024000);//10M
 
 //表
 define("t_login","login"); //登陆
+define("t_menu","lp_menu"); //菜单
 define("t_info","common"); //用户信息
 define("t_gonggao","gonggao"); //公告
 define("t_fujian","fujian"); //附件

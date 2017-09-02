@@ -69,7 +69,7 @@ class Database{
     }
 	
 	protected function run($clear=false){
-		$GLOBALS["sql"]  ="<p style='color:red'>".$this->sql."</p>";
+		$GLOBALS["sql"]  =@$GLOBALS["sql"]."<p style='color:red'>".$this->sql."</p>";
 		$result = mysql_query($this->sql);
 		//echo gettype($result);
 		
@@ -166,7 +166,15 @@ class Database{
 
      public function page($s=0,$l=10,$clear=false){
 	   $this->sql ="select ".$this->files." from ".$this->_table.$this->where.$this->order." limit ".$s.",".$l;
-	   return $this->run($clear);
+	   $res = $this->run($clear);
+	   $this->sql="select count(*) allPage from ".$this->_table.$this->where;
+	   $count = $this->run($clear);
+	   if($count){
+	   		$count=$count[0]['allPage'];
+	   }else{
+	   		$count=0;
+	   }
+	   return array("data"=>$res,"page"=>array("all"=>$count,"start"=>$s,"long"=>$l));
    }
 
    
@@ -182,7 +190,6 @@ class Database{
 		   $this->sql =  "UPDATE ".$this->_table." SET ".$temp." ".$this->where;
 	   }
 	   return $this->run($clear);
-	 
    }
    
    public function add($add,$clear=false){
@@ -197,13 +204,23 @@ class Database{
 		   $tempv = substr($tempv,0,strlen($tempv)-1);
 		   $this->sql =  "INSERT INTO ".$this->_table." (".$tempk.")values(".$tempv.")";
 	   }
-	   return $this->run($clear);
+	    $this->run($clear);
+	    $this->sql="select last_insert_id() as a";
+	    $resss = $this->run($clear);
+	    return $resss[0]['a'];
+	  
    }
    
     public function query($sql,$clear=false){
 		$this->sql = $sql;
 	   return $this->run($clear);
    }
+
+   public function delete($clear=false){
+		$this->sql = "delete from ".$this->_table." ".$this->where;
+	   return $this->run($clear);
+   }
+   
    
    public function clear(){
 	     $this->where =' where 1=1 ';

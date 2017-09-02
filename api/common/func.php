@@ -20,14 +20,14 @@ function returnJson($code=-1,$data="",$other=""){
 		$code = -1;
 	}
 	$res = array();
-	$res['code'] = $code;
-	$res['msg'] = $GLOBALS['error'][$code];	
+	$res['code'] = @$code;
+	$res['msg'] = @$GLOBALS['error'][$code];	
 	if($other){
-		$res['other'] = $other;
+		$res['other'] = @$other;
 	}
 	$res['data'] = $data;
 
-	$res['sql'] = $GLOBALS["sql"]; 
+	$res['sql'] =@ $GLOBALS["sql"]; 
 	$callBack = @$_REQUEST['callBack'];
 	if($callBack){
 		echo $callBack.'('.json_encode($res).')';
@@ -50,6 +50,18 @@ function is_login(){
 	}
 }
 
+function check_vercode($v){
+	$vc = get_session("_lp_verlicode");
+	if($vc){
+		if(strtolower($vc)==strtolower($v)){
+			return true;
+		}else{
+			return false;
+		}
+	}else{
+		return false;
+	}
+}
 
 function get_session($d){
 	if(isset($_SESSION[$d])){

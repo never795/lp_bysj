@@ -27,10 +27,13 @@ $(function(){
 		data.p=p;
 		data.v=imgCode;
 		lp.request("login",data,function(r){
-				console.log(r);
 				if (r.code!=0){
 					alert(r.msg);
 				} else{
+<<<<<<< HEAD
+=======
+					lp.setdata("user",r.data.user) 
+>>>>>>> e4a51282e06f7a8429373da1c356d1fc02b471ae
 					lp.setdata("menu",r.data.menu) 
 					document.location.href="page/index.html"
 				}
