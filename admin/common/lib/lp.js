@@ -7,20 +7,27 @@ lp.url="http://192.168.8.100";
 
 lp.request=function(c,d,s){
 
-		lp["call_"+c]=s;
-
+		if(typeof(d)==="function"){
+			var so=d;
+			var data={};
+		}else{
+			var data = d||{};
+			var so = s || function(e){}
+		}
 		var code =c || 110;
-		var data = d||{};
-		var s = s || function(e){console.log(e)}
+		
 		var url=this.url+"/index.php?code="+code;
 		$.ajax({
 			url:url,
+			crossDomain: true,
+			dataType: "jsonp",
 			type:"POST",
-			dataType : 'jsonp',  
+			crossDomain: true, 
         	jsonp:"callBack", 
 			data:data,
 			success:function(d){
-				s(d);
+				console.log(d);
+				so(d);
 			}
 	});
 };
@@ -47,3 +54,6 @@ lp.getdata=function(kk){
 	}
 	return k;
 }
+
+
+

@@ -31,9 +31,8 @@ $(function(){
 				if (r.code!=0){
 					alert(r.msg);
 				} else{
-
 					lp.setdata("menu",r.data.menu) 
-					//document.location.href="page/index.html"
+					document.location.href="page/index.html"
 				}
 		});
 	}
