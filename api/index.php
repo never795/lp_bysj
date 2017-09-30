@@ -1,4 +1,5 @@
 ﻿<?PHP
+
 if(!isset($_SESSION))
  session_start();
 include "common/config.php" ;
@@ -119,6 +120,11 @@ switch ($code) {
 		$u->getMonthSalary();
 	break;
 
+	case 'draw':
+		include "app/draw.php";
+		$u = new draw();
+		$u->getLan();
+	break;
 
 	case '-1':
 		tojs();

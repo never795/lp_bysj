@@ -1,0 +1,63 @@
+
+
+
+<html>
+<meta charset="utf-8">
+<body>
+     <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 100%;height:400px;"></div>
+</body>
+</html>
+<script type="text/javascript" src="../../common/lib/echarts.js"></script>
+<script type="text/javascript" src="../../common/lib/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="../../common/lib/lp.js"></script>
+<script type="text/javascript">
+
+var temp=0;
+var dat = {};
+lp.request("draw",{type:2},function(r){
+    if(r.code===0){
+        dat.x=[];
+        dat.y=[];
+        for (var i = 0; i < r.data.length; i++) {
+            dat.x.push(r.data[i].s);
+            dat.y.push(r.data[i].land);
+        }
+        temp++;
+        initEch("main",dat);
+    }
+
+})
+
+
+ function initEch(dom,dat){
+ // 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById(dom));
+var option = {
+            title: {
+                text: '区域平均地面积'
+            },
+            tooltip: {},
+            legend: {
+                data:['区域平均地面积（平方米）']
+            },
+            grid:{
+                y2:140
+            },
+            xAxis: {
+                data: dat.x,
+                axisLabel:{
+                    interval:0,
+                    rotate:-60
+                }
+            },
+            yAxis: {},
+            series: [{
+                name: '区域平均地面积',
+                type: 'bar',
+                data: dat.y
+            }]
+        };
+myChart.setOption(option);
+}
+</script>

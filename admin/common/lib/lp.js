@@ -5,8 +5,6 @@ var lp={
 lp.url="http://127.0.0.1/api";
 
 lp.request=function(c,d,s){
-<<<<<<< HEAD
-
 		if(typeof(d)==="function"){
 			var so=d;
 			var data={};
@@ -14,26 +12,8 @@ lp.request=function(c,d,s){
 			var data = d||{};
 			var so = s || function(e){}
 		}
-=======
->>>>>>> e4a51282e06f7a8429373da1c356d1fc02b471ae
 		var code =c || 110;
-		
 		var url=this.url+"/index.php?code="+code;
-<<<<<<< HEAD
-		$.ajax({
-			url:url,
-			crossDomain: true,
-			dataType: "jsonp",
-			type:"POST",
-			crossDomain: true, 
-        	jsonp:"callBack", 
-			data:data,
-			success:function(d){
-				console.log(d);
-				so(d);
-			}
-	});
-=======
 		if(url.indexOf("127.0.0.1")==-1){
 			$.ajax({
 				url:url,
@@ -44,7 +24,7 @@ lp.request=function(c,d,s){
 				success:function(d){
 					try{
 						console.log(res);
-						s(d);
+						so(d);
 					}catch(e){
 						lp.error(e)
 					}
@@ -57,9 +37,11 @@ lp.request=function(c,d,s){
 				data:data,
 				success:function(d){
 					try{
+						if(typeof(d)=='string')
 						var res = eval("("+d+")");
+						else  res = d;
 						console.log(res);
-						s(res);
+						so(res);
 					}catch(e){
 						lp.error(e)
 					}
@@ -67,7 +49,6 @@ lp.request=function(c,d,s){
 				}
 			});
 		}
->>>>>>> e4a51282e06f7a8429373da1c356d1fc02b471ae
 };
 
 lp.error=function(e){

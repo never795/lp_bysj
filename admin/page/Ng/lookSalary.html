@@ -1,7 +1,7 @@
 <html>
 <meta charset="utf-8">
 <body>
-	 <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+     <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
     <div id="main" style="width: 100%;height:400px;"></div>
 </body>
 </html>
@@ -13,16 +13,16 @@
 var temp=0;
 var dat = {};
 lp.request("getMonthSalary",function(r){
-	if(r.code===0){
-		dat.x=[];
-		dat.y=[];
-		for (var i = 0; i < r.data.length; i++) {
-			dat.x.push(r.data[i].s);
-			dat.y.push(r.data[i].avgsa);
-		}
-		temp++;
-		initEch("main",dat);
-	}
+    if(r.code===0){
+        dat.x=[];
+        dat.y=[];
+        for (var i = 0; i < r.data.length; i++) {
+            dat.x.push(r.data[i].s);
+            dat.y.push(r.data[i].avgsa);
+        }
+        temp++;
+        initEch("main",dat);
+    }
 
 })
 
@@ -39,13 +39,13 @@ var option = {
                 data:['平均工资']
             },
             grid:{
-            	y2:140
+                y2:140
             },
             xAxis: {
                 data: dat.x,
                 axisLabel:{
-                	interval:0,
-                	rotate:-60
+                    interval:0,
+                    rotate:-60
                 }
             },
             yAxis: {},
@@ -57,9 +57,4 @@ var option = {
         };
 myChart.setOption(option);
 }
-
-
-
-
-
 </script>

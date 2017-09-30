@@ -32,6 +32,7 @@ function returnJson($code=-1,$data="",$other=""){
 	if($callBack){
 		echo $callBack.'('.json_encode($res).')';
 	}else{
+		//header('Content-type:text/json');     //这句是重点，它告诉接收数据的对象此页面输出的是json数据；
 		echo json_encode($res);
 	}
 	
