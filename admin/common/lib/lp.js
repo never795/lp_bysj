@@ -41,6 +41,14 @@ lp.request=function(c,d,s){
 						var res = eval("("+d+")");
 						else  res = d;
 						console.log(res);
+						if(res.code>=10){
+							if(res.code%2==0){
+								layer.msg(res.msg);
+							}else{
+								layer.alert(res.msg);
+							}
+						}
+						
 						so(res);
 					}catch(e){
 						lp.error(e)
@@ -52,7 +60,7 @@ lp.request=function(c,d,s){
 };
 
 lp.error=function(e){
-	console.err(e)
+	console.error(e)
 }
 
 
@@ -76,6 +84,11 @@ lp.getdata=function(kk){
 	}
 	return k;
 }
+lp.getParam=function(name){
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
 
+}
 
 

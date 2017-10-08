@@ -1,7 +1,10 @@
 <?php 
  include "common/ExcelToArrary.php";
 $exl = new ExcelToArrary();
-$exl->push(array('uid'=>'id',"email"=>'邮箱','password'=>'密码'),array(array('uid'=>'a2',"email"=>'1234124','password'=>'c2'),array('uid'=>'a3',"email"=>'b3','password'=>'c3'),array('uid'=>'231',"email"=>'1234124','password'=>'2222'),array('uid'=>'231',"email"=>'1234124','password'=>'2222'),array('uid'=>'231',"email"=>'1234124','password'=>'2222')));
+$titl=array('X'=>'省',"Y0"=>'邮箱','password'=>'');
+$data =array(array('X'=>'a2',"Y0"=>'1234124','1'=>'c2'),array('X'=>'a3',"Y0"=>'b3','0'=>'c3'));
+print_r($data);exit();
+$exl->push($titl,$data );
 
 // for ($i=0; $i < 128; $i++) { 
 // 	echo chr($i)."==".$i."\t"; 

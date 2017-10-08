@@ -437,10 +437,26 @@ $(function(){
 				// ]}
 				];
 
-	menu = lp.getdata("menu");
-	initMenu(menu,$(".side-menu"));
-	$(".side-menu > li").addClass("menu-item");
+	
+	initMenus();
 	
 	/*获取菜单icon随机色*/
 	//getMathColor();
 }); 
+
+var initMenus=function(){
+	lp.request("getMenu",function(d){
+		if(d.data){
+			if(d.data){ 
+				$(".side-menu").empty();
+				menu=d.data;
+			    initMenu(menu,$(".side-menu"));
+				$(".side-menu > li").addClass("menu-item");
+					}
+		}else{
+			alert("登陆过期，请重新登陆");
+			window.location.href = "../";
+		}
+		
+	});
+}

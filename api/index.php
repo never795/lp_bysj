@@ -20,6 +20,23 @@ switch ($code) {
 
 	case 'login'://仅仅登陆
 		include "app/login.php" ;
+		if(VERLICODE){
+			if(!check_vercode(get("v"))){
+				returnJson(10000);
+			}
+		}
+		$l = new login();
+		$l->logins(get("u"),get("p"));
+		break;
+	case 'getMenu'://获取菜单
+		include "app/login.php" ;
+		$user = is_login();
+		if($user){
+			$l = new login();
+			returnJson(0,$l->menu($user['user']['lp_role']));
+		}
+		
+		
 		break;
 	case 'img'://仅仅登陆
 		include "common/image.php" ;
@@ -113,7 +130,24 @@ switch ($code) {
 		$u = new menu();
 		$u->addMenu();
 		break;
-	
+	case 'delMenu':
+		include "app/menu.php";
+		$u = new menu();
+		$u->delMenu(get('id'));
+		break;
+	case 'editMenu':
+		include "app/menu.php";
+		$u = new menu();
+		$u->editMenu();
+		break;
+
+	//农民共信息相关
+	case 'ngWork':
+		include "app/Ng.php";
+		$u = new Ng();
+		$u->ngWork(get('id'));
+	break;
+
 	case 'getMonthSalary':
 		include "app/ng.php";
 		$u = new ng();
@@ -124,6 +158,12 @@ switch ($code) {
 		include "app/draw.php";
 		$u = new draw();
 		$u->getLan();
+	break;
+
+	case 'echarts':
+		include "app/draw.php";
+		$u = new draw();
+		$u->drawData();
 	break;
 
 	case '-1':

@@ -1,0 +1,115 @@
+<html>
+<meta charset="utf-8">
+<body>
+     <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+     <br />
+          <button id="exp" class="layui-btn" lay-submit="" lay-filter="demo1">导出EXL</button>
+     <br />
+    <div id="main" style="width: 100%;height:400px;"></div>
+</body>
+</html>
+<script type="text/javascript" src="../../common/lib/echarts.js"></script>
+<script type="text/javascript" src="../../common/lib/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="../../common/lib/lp.js"></script>
+<script type="text/javascript">
+var _t = lp.getParam('type');
+var darwType=lp.getParam('darwType')||"bar";
+var temp=0;
+var dat = {};
+lp.request("echarts",{type:_t},function(r){
+    
+    if(r.code===0){
+        dat.x=[];
+        dat.y=[];
+        dat.option= r.data.option;
+
+        //Y轴的条数
+        dat.series=[];
+        dat.legend={data:[]};
+        for(var j=0; j<dat.option.yMnuber;j++){
+            dat.series.push({
+                name:dat.option['Y'+j],
+                type: darwType,
+                data:[]
+            });
+            dat.legend.data.push(dat.option['Y'+j]);
+        }
+
+        for (var i = 0; i < r.data.darwData.length; i++) {
+            dat.x.push(r.data.darwData[i].X);
+             for(var j=0;j<dat.option.yMnuber;j++){
+                dat.series[j].data.push(r.data.darwData[i]['Y'+j])
+             }
+            
+
+          //  dat.y.push(r.data.darwData[i].Y);
+        }
+        temp++;
+        console.log(dat)
+        initEch("main",dat);
+    }
+})
+
+
+
+
+function initEch(dom,dat){
+ // 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById(dom));
+var option = {
+            title: {
+                text: dat.option.title||"图像"
+            },
+            tooltip: {},
+            toolbox: {
+                show: true,
+                orient:'vertical',
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: {readOnly: false},
+                    magicType: {type: ['line', 'bar']},
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            tooltip: {
+                 trigger: 'axis'
+            },
+            legend: dat.legend,
+            grid:{
+                y2:140
+            },
+            xAxis: {
+                data: dat.x,
+                axisLabel:{
+                    interval:0,
+                    rotate:-60
+                }
+            },
+            yAxis: {},
+            series: dat.series
+            // [{
+            //     name: dat.option.title||"图像",
+            //     type: darwType,
+            //     data: dat.y
+            // }]
+        };
+myChart.setOption(option);
+};
+
+
+
+
+$(function(){
+
+$("#exp").click(function(){
+    if(confirm("确定导出")){
+        window.open(lp.url+"?code=echarts&exp=1&type="+_t);
+    }
+
+});
+
+})
+</script>

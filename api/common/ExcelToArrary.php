@@ -28,29 +28,35 @@ class ExcelToArrary{
             if($i==0){
               $num=65; //65  =>A
               foreach($title as $k => $v){
-                if(!isset($data[$i][$k])){header("Content-Type: text/html; charset=UTF-8");exit("不存在下标".$k);}
-                $objPHPExcel->setActiveSheetIndex(0)
-                             ->setCellValue(chr($num)."1",$v)   // 设置表头A1，B1，C1 一次类推 对应的名字
-                             ->setCellValue(chr($num)."2",$data[$i][$k]); //肯定有第一航数据 
-                             $num++;
+                if($v){
+                     if(!isset($data[$i][$k])){header("Content-Type: text/html; charset=UTF-8");exit("不存在下标".$k);}
+                      $objPHPExcel->setActiveSheetIndex(0)
+                                   ->setCellValue(chr($num)."1",$v)   // 设置表头A1，B1，C1 一次类推 对应的名字
+                                   ->setCellValue(chr($num)."2",$data[$i][$k]); //肯定有第一航数据 
+                                  // echo $v.$data[$i][$k];
+                                   $num++;
                 }
+              }
             }else{
-
               $num=65; //65 =>A   A3
               foreach($title as $k => $v){
-                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue(chr($num).($i+2),$data[$i][$k]);
+                if($v){;
+                   $objPHPExcel->setActiveSheetIndex(0)->setCellValue(chr($num).($i+2),$data[$i][$k]);
                    $num++;
+                 }
               }
 
             }
          }
-
+            ob_end_clean() ;
             $objPHPExcel->getActiveSheet()->setTitle('User');
             $objPHPExcel->setActiveSheetIndex(0);
+           
              header('Content-Type: application/vnd.ms-excel');
              header('Content-Disposition: attachment;filename="'.$name.'.xls"');
              header('Cache-Control: max-age=0');
              $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+                 //  var_dump($objWriter);exit();
              $objWriter->save('php://output');
              exit;
       }

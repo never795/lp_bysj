@@ -14,7 +14,17 @@
   </head>
 <body>
 	
+<form class="layui-form" action="">
 
+    <div class="layui-form-item">
+    <label class="layui-form-label">证件号码：</label>
+    <div class="layui-input-inline">
+      <input type="text" name="id" lay-verify="idNumber" placeholder="填写证件号码" autocomplete="off" class="layui-input">
+    </div>
+     <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+  </div>
+  </form>
 <table class="layui-table" lay-skin="line">
   <colgroup>
     <col width="150">
@@ -24,18 +34,11 @@
   </colgroup>
   <thead>
     <tr>
-      <th>菜单名称</th>
-      <th>菜单地址</th>
-      <th>菜单标识</th>
-      <th>是否显示</th>
-      <th>操作</th>
-    </tr> 
-     <tr>
-      <th><input type="text" 菜单名称 /></th>
-      <th><input style="width: 341px;"  type="text" 菜单名称 /></th>
-      <th><input type="text" 菜单名称 /></th>
-      <th><input style="width: 20px;"  type="text" 菜单名称 /></th>
-      <th><span class="layui-btn layui-btn-small" onclick="add(this)">添加</span></th>
+      <th>姓名</th>
+      <th>开始时间</th>
+      <th>结束事件</th>
+      <th>工作地点</th>
+      <th>工作类型</th>
     </tr> 
   </thead>
   <tbody id="userlist">
@@ -48,6 +51,6 @@
 <script type="text/javascript" src="../../common/lib/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="../../common/layui/layui.js"></script>
 <script type="text/javascript" src="../../common/lib/lp.js"></script>
-<script type="text/javascript" src="../../common/js/menu/lookMenu.js"></script>
+<script type="text/javascript" src="../../common/js/ng/ngUpdate.js"></script>
 
 

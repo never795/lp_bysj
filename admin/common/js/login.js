@@ -36,10 +36,18 @@ $(function(){
 				}
 		});
 	}
-		
-
 	//吧定于的函数跟登录按钮关联起来
 	loginBut.click(loginFunc);
+});
+
+//回车提交
+$(function(){
+	$(".enterCommit").keyup(function(e){
+		if(e.keyCode==13){ //回车键
+			$("#login").click();//模拟点击登陆
+		}
+	});
+
 })
 
 
@@ -57,7 +65,7 @@ var imgsFunc = function(){
 //把点击更新验证码图片函数与点击事件绑定//点击更新验证码图片函数
 imgs.click(imgsFunc);
 
-
+//根据服务器的配置是否显示验证码
 lp.request("needImg",{},function(s){
 	if (s.data ==true){
 		$("#imagsblock").show()

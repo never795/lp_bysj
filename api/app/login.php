@@ -7,11 +7,11 @@ class login extends db{
 	protected $table_part = "part";
 	protected $_user=null;
 
-	protected function menu(){
+	public function menu($role=0){
 		$sql ="
 		select * from lp_menu m
 		inner join lp_role_menu rm on m.menu_id=rm.lp_menu_id
-		where m.lp_menu_show=1 and rm.lp_role_id='".$this->_user['user']['lp_role']."' order by m.lp_menu_post";
+		where m.lp_menu_show=1 and rm.lp_role_id='".$role."' order by m.lp_menu_post";
 		$res = $this->D->query($sql);
 		return $this->bmenu($res);
 	}
@@ -21,10 +21,10 @@ class login extends db{
 		$res =  $this->D->query($sql);
 		if(count($res)==1){
 			if($res[0]['lp_password'] == $pwd){
-				$res[0]['lp_password'] = "******";
 				$this->_user['user'] = $res[0];
-		 		$this->_user['menu'] =$this->menu();
+		 		$this->_user['menu'] =$this->menu($res[0]['lp_role']);
 		 		set_session($this->_user,SESSION_USER);
+		 		$res[0]['lp_password'] = "******";
 			}else{
 				returnJson(1);
 			}
@@ -70,11 +70,5 @@ public function bmenu($res){
 	return $menu;
 }
 }
-if(VERLICODE){
-	if(!check_vercode(get("v"))){
-		returnJson(10000);
-	}
-}
-$l = new login();
-$l->logins(get("u"),get("p"));
+
 ?>
