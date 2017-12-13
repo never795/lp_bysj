@@ -118,11 +118,17 @@ switch ($code) {
 		$u->part(get('part'));
 		break;
 
-		//菜单
+		//菜单分页
 	case 'menuList':
 		include "app/menu.php";
 		$u = new menu();
 		$u->getMAllenu();
+		break;
+		//菜单不分页，构建好的
+	case 'menuListbull':
+		include "app/menu.php";
+		$u = new menu();
+		$u->getMAllenuBull();
 		break;
 
 	case 'addMenu':

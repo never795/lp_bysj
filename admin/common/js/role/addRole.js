@@ -1,7 +1,7 @@
 //init();
 var temp=0;
 var menus=[]
-lp.request("menuList",function(r){
+lp.request("menuListbull",function(r){
     if(r.code===0){
       menus = r.data;
      }
@@ -14,20 +14,6 @@ var aaaaa = setInterval(function(){
     clearInterval(aaaaa);
   }
 },1);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function init(){

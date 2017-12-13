@@ -1,0 +1,764 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>query data</title>
+<style type="text/css"> <!--
+.normal {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; color: #000000}
+.medium {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 15px; font-weight: bold; color: #000000; text-decoration: none}
+--></style>
+</head>
+<body>
+<h3>query result</h3><table border=1>
+<tr>
+<td bgcolor=silver class='medium'>表名</td><td bgcolor=silver class='medium'>列名</td><td bgcolor=silver class='medium'>数据类型</td><td bgcolor=silver class='medium'>备注</td></tr>
+<tr>
+<td class='normal' valign='top'>common</td>
+<td class='normal' valign='top'>common_ID</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>农名工常用信息编号</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>common</td>
+<td class='normal' valign='top'>now_addr</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>现住地</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>common</td>
+<td class='normal' valign='top'>worktime</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>在外工作时间</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>common</td>
+<td class='normal' valign='top'>land</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>家中土地情况</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>common</td>
+<td class='normal' valign='top'>jtkn</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>有无家庭困难情况</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>common</td>
+<td class='normal' valign='top'>knqk</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>具体困难情况</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>common</td>
+<td class='normal' valign='top'>lset</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>家中是否有留守儿童</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>common</td>
+<td class='normal' valign='top'>lslr</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>家中是否有留守老人</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>common</td>
+<td class='normal' valign='top'>card_number</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>身份证</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>common</td>
+<td class='normal' valign='top'>month_salary</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>月收入</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>dayi</td>
+<td class='normal' valign='top'>dy_id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>答疑编号</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>dayi</td>
+<td class='normal' valign='top'>login_id</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>登录信息编号</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>dayi</td>
+<td class='normal' valign='top'>consult</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>咨询内容</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>dayi</td>
+<td class='normal' valign='top'>answer</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>答复内容</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>dayi</td>
+<td class='normal' valign='top'>dy_time</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>答复时间</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>dayi</td>
+<td class='normal' valign='top'>huifuzt</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>回复状态</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>dayi</td>
+<td class='normal' valign='top'>dy_remarker</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>答疑备注</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_dict</td>
+<td class='normal' valign='top'>id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>id</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_dict</td>
+<td class='normal' valign='top'>key</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>字典名称</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_dict</td>
+<td class='normal' valign='top'>val</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>字典值</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_dict</td>
+<td class='normal' valign='top'>type</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>0代表字典</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_menu</td>
+<td class='normal' valign='top'>menu_Id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_menu</td>
+<td class='normal' valign='top'>lp_menu_name</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>菜单名字</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_menu</td>
+<td class='normal' valign='top'>lp_menu_post</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>级联关系</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_menu</td>
+<td class='normal' valign='top'>lp_menu_url</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>菜单地址</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_menu</td>
+<td class='normal' valign='top'>lp_menu_show</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否显示</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_menu</td>
+<td class='normal' valign='top'>lp_menu_ext</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>拓展</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_role</td>
+<td class='normal' valign='top'>role_Id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>角色ID</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_role</td>
+<td class='normal' valign='top'>lp_name</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>角色名称</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_role</td>
+<td class='normal' valign='top'>lp_ext</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_role</td>
+<td class='normal' valign='top'>lp_post</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>级联关系</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_role</td>
+<td class='normal' valign='top'>lp_ext1</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_role_menu</td>
+<td class='normal' valign='top'>role_menu_Id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>ID</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_role_menu</td>
+<td class='normal' valign='top'>lp_menu_id</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>菜单ID</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_role_menu</td>
+<td class='normal' valign='top'>lp_role_id</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>角色ID</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_role_menu</td>
+<td class='normal' valign='top'>lp_gran_user</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>授权用户</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_role_menu</td>
+<td class='normal' valign='top'>lp_grant_time</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>授权时间</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_user</td>
+<td class='normal' valign='top'>user_Id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_user</td>
+<td class='normal' valign='top'>lp_username</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>用户名</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_user</td>
+<td class='normal' valign='top'>lp_password</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>密码</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_user</td>
+<td class='normal' valign='top'>lp_regirst_time</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>注册时间</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_user</td>
+<td class='normal' valign='top'>lp_role</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>所属角色</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_user</td>
+<td class='normal' valign='top'>lp_remark</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>备注</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_user</td>
+<td class='normal' valign='top'>lp_ext</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>lp_user</td>
+<td class='normal' valign='top'>lp_ext1</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>Id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>ng_id</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>农民基本信息ID</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>card_nummber</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>身份证</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>month_salary</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>月收入</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>boy_number</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>男孩子</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>girl_number</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>女孩数量</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>old_persion</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>老人数量</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>is_sigle_famlay</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否单亲家庭</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>education</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>受教育程度</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>is_poor_famlay</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否贫困家庭</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>lan_number</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>土地面积</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>is_broken</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否离异</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_ext</td>
+<td class='normal' valign='top'>ng_is_yyhxgz</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否意愿回乡工作</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_info</td>
+<td class='normal' valign='top'>Id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_info</td>
+<td class='normal' valign='top'>ng_name</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>姓名</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_info</td>
+<td class='normal' valign='top'>ng_sex</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>性别</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_info</td>
+<td class='normal' valign='top'>ng_phone</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>电话号码</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_info</td>
+<td class='normal' valign='top'>ng_card</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>证件号码</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_move</td>
+<td class='normal' valign='top'>Id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_move</td>
+<td class='normal' valign='top'>card_number</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>身份证</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_move</td>
+<td class='normal' valign='top'>start_time</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>开始时间</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_move</td>
+<td class='normal' valign='top'>end_time</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>离开时间</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_move</td>
+<td class='normal' valign='top'>work_place</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>工作地点</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_move</td>
+<td class='normal' valign='top'>wor_type</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>工作性质</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_work</td>
+<td class='normal' valign='top'>Id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_work</td>
+<td class='normal' valign='top'>car_number</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>身份证号</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_work</td>
+<td class='normal' valign='top'>is_stable_work</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>工作是否稳定</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_work</td>
+<td class='normal' valign='top'>work_time</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>工作时长</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_work</td>
+<td class='normal' valign='top'>is_work_education</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否接受过就业培训</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_work</td>
+<td class='normal' valign='top'>want_work</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>想要从事工作</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_work</td>
+<td class='normal' valign='top'>now_work</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>现在从事工作</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>ng_work</td>
+<td class='normal' valign='top'>is_group_insurer</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否购买团体保险</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>part</td>
+<td class='normal' valign='top'>p_Id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>part</td>
+<td class='normal' valign='top'>p_name</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>part</td>
+<td class='normal' valign='top'>p_post</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>part</td>
+<td class='normal' valign='top'>p_remark</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>province</td>
+<td class='normal' valign='top'>Id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>province</td>
+<td class='normal' valign='top'>Pcode</td>
+<td class='normal' valign='top'>bigint</td>
+<td class='normal' valign='top'>省份代码</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>province</td>
+<td class='normal' valign='top'>Pname</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>省份名称</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>province</td>
+<td class='normal' valign='top'>NationCode</td>
+<td class='normal' valign='top'>bigint</td>
+<td class='normal' valign='top'>地区代码</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>s_id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>pro</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>省份名称</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>Id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>ng_id</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>农民基本信息ID</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>card_nummber</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>身份证</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>month_salary</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>月收入</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>boy_number</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>男孩子</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>girl_number</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>女孩数量</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>old_persion</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>老人数量</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>is_sigle_famlay</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否单亲家庭</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>education</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>受教育程度</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>is_poor_famlay</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否贫困家庭</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>lan_number</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>土地面积</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>is_broken</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否离异</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>ng_is_yyhxgz</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否意愿回乡工作</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>is_group_insurer</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否购买团体保险</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>is_stable_work</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>工作是否稳定</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>is_work_education</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否接受过就业培训</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>now_work</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>现在从事工作</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>want_work</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>想要从事工作</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_ng_info</td>
+<td class='normal' valign='top'>work_time</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>工作时长</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_pro_monery</td>
+<td class='normal' valign='top'>s_id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_pro_monery</td>
+<td class='normal' valign='top'>user_id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_pro_monery</td>
+<td class='normal' valign='top'>pro</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>省份名称</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_pro_monery</td>
+<td class='normal' valign='top'>sa</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>月收入</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_user_pr</td>
+<td class='normal' valign='top'>Id</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>&nbsp;</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_user_pr</td>
+<td class='normal' valign='top'>s</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>省份名称</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>v_user_pr</td>
+<td class='normal' valign='top'>sa</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>月收入</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>workerinfo</td>
+<td class='normal' valign='top'>workerinfo_ID</td>
+<td class='normal' valign='top'>int</td>
+<td class='normal' valign='top'>农名工信息编号</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>workerinfo</td>
+<td class='normal' valign='top'>common_id</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>农名工常用信息编号</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>workerinfo</td>
+<td class='normal' valign='top'>login_ID</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>登录信息编号</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>workerinfo</td>
+<td class='normal' valign='top'>age</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>年龄</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>workerinfo</td>
+<td class='normal' valign='top'>huji_addr</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>户籍地址</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>workerinfo</td>
+<td class='normal' valign='top'>huji_xingzhi</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>户籍性质</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>workerinfo</td>
+<td class='normal' valign='top'>photo</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>相片</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>workerinfo</td>
+<td class='normal' valign='top'>date_birth</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>出生日期</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>workerinfo</td>
+<td class='normal' valign='top'>zzmm</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>政治面貌</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>workerinfo</td>
+<td class='normal' valign='top'>edu</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>学历</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>workerinfo</td>
+<td class='normal' valign='top'>buy_house</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否购买住房</td>
+</tr>
+<tr>
+<td class='normal' valign='top'>workerinfo</td>
+<td class='normal' valign='top'>build_house</td>
+<td class='normal' valign='top'>varchar</td>
+<td class='normal' valign='top'>是否回乡建房</td>
+</tr>
+</table>
+</body></html>

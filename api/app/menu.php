@@ -71,7 +71,6 @@ public function editMenu(){
 		}else{
 			returnJson(11);
 		}
-		
 	}
 
 

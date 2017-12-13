@@ -1,4 +1,7 @@
 <?php
+/*
+用户角色相关
+ */
 class user extends db {
 
 	private $table_user = "lp_user";
@@ -12,6 +15,7 @@ class user extends db {
 		returnJson($res);
 	}
 
+	//添加用户
 	public function userAdd(){
 		$user=array();
 		$user['lp_username']=get('lp_username');
@@ -24,17 +28,18 @@ class user extends db {
 		returnJson($res);
 	} 
 
+	//通过姓名查询用户
 	public function getUserByuserNamw($u){
 		$res = $this->D->table($this->table_user)->where(" lp_username='".$u."'")->select();
 		return $res;
 	}
+	//删除用户
 	public function delUser($d){
 		$res = $this->D->table($this->table_user)->where(" user_Id='".$d."'")->delete();
-		
 		returnJson(0,$res);
-		
-
 	}
+
+	//更新用户信息
 	public function update($update){
 		if(!isset($update['user_Id'])){
 			returnJson(9999,"user_Id");
