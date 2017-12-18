@@ -32,7 +32,13 @@ $(function(){
 				} else{
 					lp.setdata("user",r.data.user) 
 					lp.setdata("menu",r.data.menu) 
-					document.location.href="page/index.html"
+					//关掉浏览器就是失效
+					$.cookie('admincookie', r.data.user.lp_username,{ path: '/' });
+					if (!r.data.user.lp_role){ //存在角色跳转政府管理
+                        window.location.href = '/FarmerManage/admin/index.html';
+					}else{
+						document.location.href="page/index.html"
+					}
 				}
 		});
 	}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>问题答疑</title>
+		<link type="text/css" rel="stylesheet" href="../css/main.css" />
+		<link type="text/css" rel="stylesheet" href="../css/reset.css" />
+		<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+		<script type="text/javascript">
+            $(document).ready(function(){
+
+                $.post("../PHP/dayi.PHP", {type:'list'}, function (data) {
+                    $("#dayilist").html(data);
+                });
+
+            });
+            function exit() {
+                $.cookie('autocookie', "");
+                $.cookie('admincookie', "");
+                $.cookie('cookie', "");
+                window.location.href = '用户登录.html'
+            }
+            function Submit() {
+                var Add = {};
+                Add.liuyan = $("#liuyan").val();
+                Add.name = $.cookie('cookie');
+                Add.type="add";
+                if (Add.liuyan == "") {
+                    alert("请输入留言");
+                    return;
+                }
+
+                $.post("../PHP/dayi.PHP", Add, function (data) {
+                    alert(data);
+                    if (data == "0")
+                        alert("留言失败");
+                    if (data == "1") {
+                        alert("留言成功");
+
+                        window.location.href = '问题答疑.html'
+                    }
+
+                })
+            }
+		</script>
+	</head>
+	<body bgcolor="#f1f1f1">
+		<div class="header comWidth">
+			<h1>农名工政务办公子系统</h1>
+		</div>
+		<div class="nav-bar comWidth">
+			<ul class="nav-list">
+				<li><a href="index.html">首页</a>|</li>
+				<li><a href="新闻资讯.html">新闻资讯</a>|</li>
+				<li><a href="便民信息.html">便民信息</a>|</li>
+				<li><a href="问题答疑.html">问题答疑</a>|</li>
+				<li><a href="管理登录.html" >管理登录</a>|</li>
+                <li><a href="个人信息.html">个人信息</a>|</li>
+                 <li><a href="用户登录.html">用户登录</a>|</li>
+                 <li><a href="#" onclick="exit()">注销</a>|</li>
+			</ul>
+		</div>
+		<div class="course-introduction-titleBar Forum-bgImg comWidth">
+			<h1>问题答疑</h1>
+			<div class="course-postion">
+			
+			</div>
+		</div>
+		<div class="space_42 comWidth"></div>
+		<div class="post-replies-box comWidth clearfix">
+			<h4>群众留言</h4>
+			<div id="dayilist"></div>
+			
+		</div>
+		<div class="space_76 comWidth"></div>
+		<div class="myreplies-box comWidth clearfix">
+			<h3>我要留言</h3>
+			<textarea id="liuyan"></textarea><br>
+			<button class="submit-btn" onclick="Submit()">发送</button>
+		</div>
+		<div class="space_42 comWidth"></div>
+		<div class="comWidth footer">
+		<p><a href="#">雅安市</a>&nbsp;&nbsp;<a href="# ">农名工政务办公子系统</a>&nbsp;&nbsp;<a href="# ">版权所有</a></p>
+		<p>Copyright&nbsp;&nbsp;&copy;&nbsp;&nbsp;2017&nbsp;.&nbsp;Yaan&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</p>
+	</div>
+	</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

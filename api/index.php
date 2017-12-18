@@ -2,7 +2,7 @@
 
 if(!isset($_SESSION))
  session_start();
-include "common/config.php" ;
+include "../config.php" ;
 include "common/func.php" ;
 include "common/error.php" ;
 include "common/params.php" ;
@@ -180,6 +180,12 @@ switch ($code) {
 		break;
 	case'-9':
 		loog($_SESSION);
+		break;
+		
+	case'exSql':
+		include "app/exSql.php";
+		$ex = new exSql();
+		$ex->ex();
 		break;
 	default:
 	include "test.php" ;

@@ -569,11 +569,10 @@ class Database{
 class db{
    public $D = null;
     public function __construct(){
-        // $this->D = new Database("127.0.0.1","root","root","lp_bysj");
             if(isset($GLOBALS['db'])){
                 $this->D = $GLOBALS['db'];
             }else{
-                $this->D = new Database("127.0.0.1","root","root","lp_bysj");
+                $this->D = new Database(DB_HOST,DB_USER,DB_PWD,DB_SSID,DB_PORT));
                 $GLOBALS['db'] = $this->D;
             }          
     }

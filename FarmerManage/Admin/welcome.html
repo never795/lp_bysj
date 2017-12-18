@@ -1,0 +1,118 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>我的桌面</title>
+</head>
+<body>
+<div class="page-container">
+	<p class="f-20 text-success">欢迎使用新生代农名工后台管理系统<span class="f-14">v1.0</span></p>
+	<table class="table table-border table-bordered table-bg">
+		<thead>
+			<tr>
+				<th colspan="8" scope="col">信息统计</th>
+			</tr>
+			<tr class="text-c">
+				<th>统计</th>
+				<th>新闻咨询</th>
+				<th>便民信息</th>
+				<th>外出统计</th>
+				<th>家庭扶持</th>
+				<th>评论管理</th>
+                <th>用户管理</th>
+                <th>管理员管理</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="text-c" id="total">
+				
+			</tr>
+			<tr class="text-c" id="today">
+				
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+				<td>0</td>
+			</tr>
+			<tr class="text-c" id="lastday">
+			
+			</tr>
+			<tr class="text-c" id="week">
+			
+			</tr>
+			<tr class="text-c" id="month">
+				
+			</tr>
+		</tbody>
+	</table>
+	
+</div>
+<footer class="footer mt-20">
+	<div class="container">
+		<p>雅安市  农名工政务办公子系统  版权所有<br>
+			Copyright &copy;2017 admin v1.0 All Rights Reserved.  <a href="http://www.mycodes.net/" target="_blank"></a><br>
+			
+	</div>
+</footer>
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script> 
+<!--此乃百度统计代码，请自行删除-->
+<script>
+    $(document).ready(function () {
+        $.post("PHP/statistic.PHP", { type: 'total' }, function (data) {
+            var response = data.split('*');
+            $("#total").html("<td>总数</td><td>" + response[0] + "次</td><td>" + response[1] + "次</td><td>" + response[2] + "次</td><td>" + response[3] + "次</td><td>" + response[4] + "次</td><td>" + response[5] + "次</td><td>" + response[6] + "次</td>");
+
+        });
+        $.post("PHP/statistic.PHP", { type: 'lastday' }, function (data) {
+            var response = data.split('*');
+            $("#lastday").html("<td>昨日</td><td>" + response[0] + "次</td><td>" + response[1] + "次</td><td>" + response[2] + "次</td><td>" + response[3] + "次</td><td>" + response[4] + "次</td><td>" + response[5] + "次</td><td>" + response[6] + "次</td>");
+
+        });
+        $.post("PHP/statistic.PHP", { type: 'today' }, function (data) {
+            var response = data.split('*');
+            $("#today").html("<td>今日</td><td>" + response[0] + "次</td><td>" + response[1] + "次</td><td>" + response[2] + "次</td><td>" + response[3] + "次</td><td>" + response[4] + "次</td><td>" + response[5] + "次</td><td>" + response[6] + "次</td>");
+
+        });
+        $.post("PHP/statistic.PHP", { type: 'week' }, function (data) {
+            var response = data.split('*');
+            $("#week").html("<td>本周</td><td>" + response[0] + "次</td><td>" + response[1] + "次</td><td>" + response[2] + "次</td><td>" + response[3] + "次</td><td>" + response[4] + "次</td><td>" + response[5] + "次</td><td>" + response[6] + "次</td>");
+
+        });
+        $.post("PHP/statistic.PHP", { type: 'month' }, function (data) {
+            var response = data.split('*');
+            $("#month").html("<td>本月</td><td>" + response[0] + "次</td><td>" + response[1] + "次</td><td>" + response[2] + "次</td><td>" + response[3] + "次</td><td>" + response[4] + "次</td><td>" + response[5] + "次</td><td>" + response[6] + "次</td>");
+
+        });
+
+    });
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?080836300300be57b7f34f4b3e97d911";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>
