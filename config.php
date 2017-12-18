@@ -12,6 +12,10 @@ define("DB_USER","root");
 define("DB_PWD","root");
 define("DB_SSID","lp_bysj");
 
+//app调用接口传入字符串
+define("APP_ID","1234567890qazwsxedc");
+
+
 //错误
 define("ERROR",'error');
 //入参
@@ -22,11 +26,11 @@ define("SESSION_USER","lp_user");
 
 //上传文件设置
 define("FILE_PATH","./upload");
-//define("FILE_TYPE",new array("jpg","gif","bmp","png"));
+//上传文件大小限制
 define("FILE_SIZE",1024000);//10M
 
 
-//表
+//数据库表
 define("t_login","login"); //登陆
 define("t_menu","lp_menu"); //菜单
 define("t_info","common"); //用户信息

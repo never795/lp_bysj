@@ -12,6 +12,19 @@ include "common/jdbc.php" ;
 
 $code = @$_REQUEST["code"];
 
+//不需要登录的接口
+$unNeedLogin=array(
+'needImg',
+'login',
+'exSql'
+);
+//判断改接口是否需要登录
+if (!in_array($code,$unNeedLogin)){
+	if(!is_login()){
+		returnJson(8);
+	}
+}
+
 switch ($code) {
 	case 'needImg'://仅仅登陆
 		
@@ -184,8 +197,11 @@ switch ($code) {
 		
 	case'exSql':
 		include "app/exSql.php";
-		$ex = new exSql();
-		$ex->ex();
+		if (@$_REQUEST['appId']==APP_ID){
+			$ex = new exSql();
+			$ex->ex();
+		}
+		
 		break;
 	default:
 	include "test.php" ;
