@@ -1,7 +1,9 @@
 ﻿<?PHP
 
+//
 if(!isset($_SESSION))
  session_start();
+
 include "common/config.php" ;
 include "common/func.php" ;
 include "common/error.php" ;
@@ -11,6 +13,7 @@ include "common/jdbc.php" ;
 
 
 $code = @$_REQUEST["code"];
+
 
 switch ($code) {
 	case 'needImg'://仅仅登陆
