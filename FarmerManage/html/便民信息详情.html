@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>便民信息详情</title>
+		<link type="text/css" rel="stylesheet" href="../css/main.css" />
+		<link type="text/css" rel="stylesheet" href="../css/reset.css" />
+		<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript">
+            $(document).ready(function(){
+                var url = location.href;
+                var i = url.indexOf('?');
+                if (i == -1) return;
+                var querystrs = url.substr(i + 1);
+                var ta = querystrs.split('=');
+                var id=ta[1];
+                $.post("../PHP/bianmin.PHP", {type:'detail',id:id}, function (data) {
+                    $("#detail").html(data);
+                });
+
+            });
+            function exit() {
+                $.cookie('autocookie', "");
+                $.cookie('admincookie', "");
+                $.cookie('cookie', "");
+                window.location.href = '用户登录.html'
+            }
+
+		</script>
+	</head>
+	<a name="top"></a>
+
+	<body bgcolor="#f1f1f1">
+		<div class="header comWidth">
+			<h1>农名工政务办公子系统</h1>
+		</div>
+		<div class="nav-bar comWidth">
+			<ul class="nav-list">
+			<li><a href="index.html">首页</a>|</li>
+				<li><a href="新闻资讯.html">新闻资讯</a>|</li>
+				<li><a href="便民信息.html">便民信息</a>|</li>
+				<li><a href="问题答疑.html">问题答疑</a>|</li>
+				<li><a href="管理登录.html" >管理登录</a>|</li>
+                <li><a href="个人信息.html">个人信息</a>|</li>
+                 <li><a href="用户登录.html">用户登录</a>|</li>
+                 <li><a href="#" onclick="exit()">注销</a>|</li>
+			</ul>
+		</div>
+		<div class="course-introduction-titleBar teaching-search-bgImg comWidth">
+			<h1>便民信息详情</h1>
+			<div class="course-postion">
+				<span><a href="index.html">首页</a>&nbsp;&gt;</span>
+				<span><a href="便民信息.html">便民信息&nbsp;&gt;</a></span>
+				<span><a href="便民信息详情.html">便民信息详情</a></span>
+			</div>
+		</div>
+		<div class="comWidth notice-box">
+			<div class="notice-cont notice-details">
+				<div id="detail"></div>
+			</div>
+		</div>
+		<div class="space_42 comWidth"></div>
+		<div class="comWidth footer">
+		<p><a href="#">雅安市</a>&nbsp;&nbsp;<a href="# ">农名工政务办公子系统</a>&nbsp;&nbsp;<a href="# ">版权所有</a></p>
+		<p>Copyright&nbsp;&nbsp;&copy;&nbsp;&nbsp;2017&nbsp;.&nbsp;Yaan&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</p>
+	</div>
+	</body>
+	
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

@@ -1,0 +1,199 @@
+/*公共部分*/
+body{font-family: "微软雅黑"; font-size: 16px;}
+.fl{float:left}
+.fr{float:right}
+.link-color{color:#0368a8;}
+/*首页顶部*/
+.comWidth{width:1180px; margin-left: auto; margin-right: auto;}
+.header{height:134px; background: url(../img/Course-introduction.jpg) no-repeat; overflow: hidden;}
+.header h1{text-align: center; color:#fff; line-height: 134px; letter-spacing: 5px; font-size: 48px;}
+/*导航栏*/
+.nav-bar{overflow:hidden; height:60px;  background-color: #fff; color:#000; margin-top: -1px;}
+
+.nav-list{height:60px; }
+.nav-list li{float: left;}
+.nav-list li a{color:#000000; width:140.6px; height:60px; line-height: 60px; text-align: center; font-size: 20px; color:#0368a8; display: block; font-weight: bold; border: none;}
+.nav-list li a:hover{background-color: #0368A8; color:#fff;}
+/*banner*/
+.banner-bar{height:380px; }
+.slide{width:1180px; height:380px; margin:0 auto; overflow:hidden; position:relative;}
+.slide .img-div{position:absolute; top:0; left:0; width:3540px;}
+.slide .img-div img{float:left;}
+.slide img{width:1180px; height:380px;}
+.slide-btn{width:1180px; height:20px; line-height:20px;position:absolute; bottom:30px;z-index:11;text-align:center;}
+.slide-btn a{width:16px; height:16px; display: inline-block; background: #656565; margin-right: 10px;  border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px;}
+.slide-btn a.hover{background: #fff;}
+
+/*简介和新闻资讯栏*/
+.intro-and-news{height: 284px; background-color: #fff; padding-left:90px; }
+.left-notice{width:474px;  height: 284px;}
+.left-notice .com-title{width:100%; height:54px;}
+.left-notice .title-iconSize{display: block; width:60px; height:56px; margin-left:10px;}
+.left-notice h4{ height:56px; line-height: 56px; padding-left:18px; color: #0368A8;}
+.left-notice span{height: 56px; line-height: 56px;}
+.left-notice p{text-indent: 2em; height:195px; line-height: 22px; font-size: 14px; overflow: hidden; }
+.left-notice ul{padding-left:14px; height:195px;  overflow: hidden; font-size: 14px; }
+.left-notice ul li{line-height: 34px; width:100%; height: 34px; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.left-notice ul i{margin-right: 4px; margin-top:10px;}
+.space_66{height:66px; background-color: #fff;}
+.marginLeft_52{margin-left: 52px;}
+.news-bar a{color:#000000;}
+.news-bar a:hover{color:#0368A8;}
+.news-bar .news-title{width:300px; height:34px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+
+/*便民信息*/
+.space_80{height:80px; background-color: #fff;}
+.bmxx{height:280px; background-color: #fff; overflow: hidden; position: relative;}
+.bmxx-detail{padding-left:90px; width:1090px;}
+.bmxx-detail h3{height:24px; line-height: 24px; }
+.bmxx-detail h3 .title{font-size: 24px; color: #0368A8;}
+.bmxx-detail h3 .more {font-weight: normal; color: #0368A8;}
+.bmxx-detail .bm-infor{font-size: 14px; height: 180px; text-indent: 2em; line-height: 30px; overflow: hidden;}
+.bm-infor .bm-infor-title{height:30px; width:600px;float:left;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.bm-infor .bm-infor-time{height:30px; width:200px;float: left;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.bm-infor .publisher{height:30px; width:auto; float:right;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.bm-infor a{color:#000000;}
+.bm-infor a:hover{color:#0368A8;}
+.dotted_1{border: 1px dotted #A0A0A0; width:100%; height: 1px;}
+.space_12{width:100%; height:12px;}
+.space_20{width:100%; height:20px;}
+.sanjiao-icon1{display: inline-block; width:13px;height:14px;  background: url(../img/icon/sanjiao-icon-s.jpg) no-repeat -2px -1px; margin-right: 6px;}
+/*其他链接*/
+.other-link{ width:200px; height:200px; background: #0090E4;  position: absolute; right:-170px; top:0px; z-index: 999; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius:10px; -moz-border-radius: 10px;}
+.other-link:hover{right:-10px; transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out; -moz-transition:all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; }
+.other-link h4{color:orange; padding-left: 20px ;}
+.other-link a{color:#fff; font-size: 14px; padding-left: 24px ;}
+.other-link .erweima{overflow: hidden; width:120px; height:120px; background: gold; margin: 5px auto;}
+.hr_1{width:100%; height:1px; background: orange;}
+
+/*页面底部*/
+.space_42{height:42px; background-color: #fff;}
+.footer{height:65px; background-color: #fff; }
+.footer p{text-align: center; font-size: 12px;}
+.footer a{color:#0368a8; font-size: 14px;}
+
+/*通知页面公用顶部*/
+.teaching-search-bgImg{background: url(../img/Teaching-Research.jpg) no-repeat;}
+.course-introduction-bgImg{background: url(../img/Course-introduction.jpg) no-repeat;}
+.course-introduction-titleBar{height:134px;  overflow: hidden;  color: #fff; background-color: #fff;}
+.course-introduction-titleBar h1{font-size: 42px;  letter-spacing:3px; font-weight: normal; text-align: center; padding-top: 47px;}
+.course-introduction-titleBar a{font-size:16px; color:#fff; font-weight: bold;}
+.select-card{margin-left:46px; font-size: 18px;}
+.course-postion{float:right; margin-right: 46px; margin-bottom: 14px;}
+.course-postion span{height:24px; line-height: 24px;}
+/*通知页*/
+.notice-box{background: #fff; height:600px; overflow: hidden;}
+.notice-cont{width:850px; height:500px; overflow: auto; margin-top:50px; margin-left: auto; margin-right: auto; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border:1px solid #A0A0A0; background-color: #f9f9f9;}
+.notice-cont .list-ul{padding-top:10px;}
+.notice-cont .list-ul li {margin:2px 20px 4px 20px; width:810px; overflow: hidden;   height:30px; line-height: 30px;}
+.notice-cont .list-ul li span,time{vertical-align: bottom;}
+.notice-cont .list-ul li:hover .notice-link-cont a{color:#0368A8;}
+.notice-cont .list-ul li:hover .notice-time{color:#0368A8;}
+.notice-cont .list-ul li .notice-link-cont{float:left; width:600px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+.notice-cont .list-ul li .notice-link-cont a{ font-size: 15px; color:#656565;}
+.notice-cont .list-ul li .notice-time{color:#656565; float:right; width:150px; height:30px; line-height: 30px;}
+.notice-admin{ padding-left: 5px; font-style: normal; font-size: 14px;}
+
+/*通知详细页*/
+.notice-details{color:#656565; padding:10px;}
+
+/*便民信息页*/
+.notice-cont .list-ul li:hover .bmxx-title a{color:#0368A8;}
+.notice-cont .list-ul li:hover .bmxx-time{color:#0368A8;}
+.notice-cont .list-ul li:hover .bmxx-faburen{color:#0368A8;}
+.notice-cont .list-ul li .bmxx-title{float:left; width:440px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; padding-right: 10px;}
+.notice-cont .list-ul li .bmxx-title a{ font-size: 15px; color:#000000;}
+.notice-cont .list-ul li .bmxx-time{float:left; width:200px;}
+.notice-cont .list-ul li .bmxx-faburen{float:right; width: auto;}
+
+/*问题答疑*/
+.Forum-bgImg{background: url(../img/Forum_img.jpg) no-repeat;}
+
+/*回帖栏*/
+.post-replies-box{padding-left:100px; padding-right:100px; background: #fff; overflow: hidden;}
+.post-replies-box h4{font-size: 24px; color: #000000; }
+.post-replies-box .replies-cont p{padding:28px 200px 32px 86px; color:#000000;}
+.post-replies-box .replies-cont{width:980px; overflow: hidden;}
+
+.admin-replies h4{ height:30px; line-height: 30px; color:#000; color:#fff; font-weight: bold; font-size: 16px; background: #0161A8;}
+.admin-replies h4 span{float:right; font-weight: normal; padding-right: 8px;}
+.replies-resourceInfor-box{padding-top:15px;}
+.replies-resourceInfor-box .replies-floor{width:60px;color:#000000; padding-right:10px; height:30px; line-height: 30px; font-weight: bold; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.replies-resourceInfor-box .replies-person-infor {padding-left:5px;  background: #6cc0ea; height:30px; line-height: 30px;}
+.class-tip-color{color:#fff; padding-left:5px; text-decoration: none;}
+.replies-time{padding-right:10px;}
+
+/*我的留言*/
+.myreplies-box{color:#000; overflow: hidden; background: white; padding-left:158px; padding-right:158px;}
+.myreplies-box h3{font-size: 20px;  margin-bottom: 22px;}
+.myreplies-box textarea{width:864px; height:192px; margin-top:18px; margin-bottom: 18px; padding:5px; border: 1px solid #000000;}
+.myreplies-box .submit-btn{float:right; outline: none; background: #0161A8;font-weight: bold; width:65px; height:30px; line-height: 30px; text-align: center; color:#fff; border: none; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius:4px; -moz-border-radius: 4px;}
+.myreplies-box .submit-btn:hover{cursor: pointer; }
+.space_76{height:76px; background-color: #fff;}
+
+/*页码栏*/
+.page-bar{width:550px; margin: 0 auto; font-size: 14px; color:#000; margin-top: 50px;}
+.page-bar div{overflow: hidden; float:left; text-align: center; border:1px solid #757575; margin-left: 7px; height:28px; line-height: 28px; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius:8px; }
+.page-bar div:hover{color:gray; background: #C6C6C6; cursor: pointer; font-weight: bold;}
+.page-bar .page-next,.page-pre{width:72px;}
+.page-comSize{width: 28px;}
+
+/*登陆和注册页*/
+.logoBar{ height:85px; background: #2579B0;}
+.logoBar h3{ font-size: 32px; }
+/*登陆*/
+.login-container{background: #fff;}
+.logoBar .comWidth{width:1180px; height:85px; line-height: 85px; margin-left: auto; margin-right:auto; background: #2579B0;}
+.welcome_title{font:22px/85px "Microsoft YaHei", "微软雅黑"; color:#FFF; text-align: center;}
+.loginBox{width:458px; border:#999 solid 1px; margin:0px auto; position:relative;}
+.loginBox .login_cont{padding:15px 76px;}
+
+.l_tit{color:#0368A8; line-height:24px;}
+.login_input{border:#999 solid 1px; height:32px; line-height:32px\9; text-indent:5px; width:306px;}
+.marginTop_10{margin-top: -10px;}
+.autoLogin{padding-top:27px; padding-bottom:28px;}
+.checked{position:relative; margin-right:3px;}
+
+.login_btn{ width:306px; height:36px; }
+.login_btn:hover{ background: #0368A8;}
+.register_btn{width:304px; height:36px; }
+.register_btn:hover{background: #0368A8;}
+.login_btn, .register_btn{cursor: pointer;font-size: 16px; font-weight: bold;letter-spacing: 10px; background-color: #2579B0; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; color:#fff; }
+
+.go-register{padding-top:34px;}
+.regBox{width:828px; margin:10px auto; /*border:#CCC solid 1px;*/}
+.reg_item{font:14px/34px "宋体"; width:110px; text-align:right; float:left;}
+.reg_item i{color:red; font-style:normal; margin-right:5px;}
+.input_item{width:306px; float:left;}
+.regBox li{height:70px; vertical-align:top;}
+.regBox .autoLogin{height:46px; padding:0;}
+.regBox .login_cont{padding:45px 0px 20px 142px; color:#0368A8;}
+.border_blue {border: 1px solid #2579B0;height: 32px;line-height: 32px\9;text-indent: 5px;width: 306px;}
+.border_red {border: 1px solid red;height: 32px;line-height: 32px\9;text-indent: 5px;width: 306px;}
+
+/*管理登录*/
+.admin-login-container{width:600px; margin-left: auto; margin-right: auto;}
+.arrange-system-title{text-align: center; color:#fff; font-size:40px; letter-spacing:15px; padding:15px 0px;}
+.admin-login-box{width:600px; height:500px; background: #fff; border-radius: 6px; -webkit-border-radius: 6px; -o-border-radius: 6px; -moz-border-radius: 6px; }
+.admin-login-box h3{color:#0090e4; text-align: center; letter-spacing: 10px; font-size: 30px; padding:35px 0px;}
+.admin-login-box form{width:500px; height:350px; margin-left: auto; margin-right: auto; padding:50px;}
+.admin-login-box form .input-comSize{font-size: 20px; padding-left:5px; padding-right: 5px; width:400px; height:50px; line-height: 50px; background: #f0f0f0; border:1px solid #f0f0f0; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -moz-border-radius: 4px; margin-top:10px; margin-bottom: 10px;}
+.admin-login-box form label{color:#000000; font-size: 20px; margin-bottom: 5px; margin-top:5px;}
+.admin-login-box form input[type="button"]{cursor: pointer; margin-top: 30px; width:100px;  height:40px; line-height: 40px; text-align: center; color:#fff; font-weight: bold; font-size: 16px; background: #0090e4; margin-left: 150px; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -moz-border-radius: 4px; }
+/*管理登录页面底部*/
+.arrage-footer{width:600px;  margin: 0 auto; background-color: #0090E4 !important; margin-top:40px; color:#fff !important;}
+.arrage-footer a{color:#fff;}
+
+
+/*个人信息*/
+.little-title-bgcolor{background: #2579b0;}
+.public-user-container{background: #fff;}
+.user-data-form{ width:460px; height:460px; margin: 0 auto;  overflow: hidden;}
+.user-data-form ul{padding-top:40px;}
+.user-data-form ul li{height:30px; line-height: 30px; margin-top: 15px; margin-bottom: 15px;}
+.user-data-form ul li .com-label-size{text-align: right; padding-right: 25px; width:120px; height:30px; display: inline-block; color:yellowgreen; font-size: 16px;}
+.user-data-form ul li .com-input-size{width:320px; height:30px; display: inline-block; }
+.user-data-form .com-input-set{width:318px; border: 1px solid greenyellow; height:30px; line-height: 30px; padding-left:5px; padding-right:5px;}
+.user-data-form input[type="button"]{width:318px; height:35px; line-height: 35px; text-align: center; background: yellowgreen; color:#fff; font-size: 18px; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius:4px; -moz-border-radius: 4px;}
+.user-data-form input[type="submit"]:hover{background: greenyellow; cursor: pointer;}
+

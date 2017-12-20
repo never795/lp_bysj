@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>密码修改</title>
+		<link href="../css/main.css" type="text/css" rel="stylesheet"> 
+		<link href="../css/reset.css" type="text/css" rel="stylesheet"> 
+		<script src="../js/jquery-2.1.1.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+		<script type="text/javascript" >
+            function Submit() {
+                var Add = {};
+                Add.name = $.cookie('cookie');
+                Add.oldpwd = $("#oldpwd").val();
+                Add.newpwd = $("#newpwd").val();
+                Add.newsurepwd = $("#newsurepwd").val();
+               Add.type="updatepwd";
+                if (Add.oldpwd == "") {
+                    alert("请输入旧密码");
+                    return;
+                }
+                if (Add.newpwd == "") {
+                    alert("请输入新密码");
+                    return;
+                }
+                if (Add.newsurepwd != Add.newpwd ) {
+                    alert("新密码前后输入不一致，请重新输入");
+                    return;
+                }
+
+                $.post("../PHP/userinfo.PHP", Add, function (data) {
+                    alert(data);
+                    if (data == "0")
+                        alert("修改失败，旧密码不正确");
+                    if (data == "3") {
+                        alert("修改成功");
+
+                    }
+                    if (data == "4")
+                        alert("修改失败");
+                })
+            }
+            function exit() {
+                $.cookie('autocookie', "");
+                $.cookie('admincookie', "");
+                $.cookie('cookie', "");
+                window.location.href = '用户登录.html'
+            }
+		</script>
+	</head>
+	<body bgcolor="#f1f1f1">
+		
+		<div class="course-introduction-titleBar little-title-bgcolor comWidth" style="background-color: yellowgreen;">
+			<h1>密码修改</h1>
+			<div class="select-card fl">
+				<span><a href="个人信息.html">个人信息</a>&nbsp;|&nbsp;<a href="密码修改.html">密码修改</a></span>
+			</div>
+			<div class="course-postion">
+				<span>欢迎你&nbsp;<a href="#">张三</a>&nbsp;用户!&nbsp;&nbsp;&nbsp;&nbsp;<a href="用户登录.html">[退出]</a></span>
+				
+			</div>
+		</div>
+		
+		<div class="public-user-container comWidth">
+			<form action="" method="post" class="user-data-form">
+				<ul>
+					<li><span class="com-label-size">账户密码:</span><span class="com-input-size"><input type="text"  id="oldpwd" class="com-input-set" placeholder="请输入您的账户密码（必填）"></span></li>
+					<li><span class="com-label-size">新密码:</span><span class="com-input-size"><input type="text" id="newpwd" class="com-input-set" placeholder="请输入您的新密码（必填）"></span></li>
+					<li><span class="com-label-size">密码确认:</span><span class="com-input-size"><input type="text" id="newsurepwd" class="com-input-set" placeholder="请再次输入新密码（必填）"></span></li>
+					<li><span class="com-label-size"></span><span class="com-input-size"><input type="button" onclick="Submit()" value="修改并提交"></span></li>
+				</ul>	
+			</form>
+		</div>
+		
+	
+	<div class="space_42 comWidth"></div>
+	
+	<!--日期插件-->
+		<script src="../js/showdate.js" type="text/javascript"></script>
+	</body>
+</html>
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

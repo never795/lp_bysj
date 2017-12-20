@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>主页</title>
+		<link href="../css/main.css" type="text/css" rel="stylesheet"> 
+		<link href="../css/reset.css" type="text/css" rel="stylesheet"> 
+		<script src="../js/jquery-2.1.1.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+		<script type="text/javascript">
+            $(document).ready(function(){
+           
+                $.post("../PHP/index.PHP", {type:'xinwen'}, function (data) {
+                	
+
+                    $("#xinwenlist").html(data);
+                });
+                $.post("../PHP/index.PHP", {type:'bianmin'}, function (data) {
+                    $("#bianminlist").html(data);
+                });
+            });
+			function exit()
+			{
+			    $.cookie('autocookie', "");
+			    $.cookie('admincookie', "");
+			    $.cookie('cookie', "");
+			    window.location.href = '用户登录.html'
+			}
+
+		</script>
+		
+	</head>
+	<body bgcolor="#f1f1f1">
+		<div class="header comWidth">
+			<h1>农名工政务办公子系统</h1>
+		</div>
+		<div class="nav-bar comWidth">
+			<ul class="nav-list">
+				<li><a href="index.html">首页</a>|</li>
+				<li><a href="新闻资讯.html">新闻资讯</a>|</li>
+				<li><a href="便民信息.html">便民信息</a>|</li>
+				<li><a href="问题答疑.html">问题答疑</a>|</li>
+				<li><a href="../../admin/" >管理登录</a>|</li>
+                <li><a href="个人信息.html">个人信息</a>|</li>
+                 <li><a href="用户登录.html">用户登录</a>|</li>
+                 <li><a href="#" onclick="exit()">注销</a>|</li>
+			</ul>
+		</div>
+		<div class="banner-bar comWidth">
+			<div class="slide" id="slide">
+				<div class="img-div" id="img-div">
+					<a href="新闻资讯详情.html"><img src="../img/banner/banner1.jpg" alt="扶贫会议" title="扶贫会议" /></a>
+					<a href="便民信息详情.html"><img src="../img/banner/banner1.jpg" alt="扶贫会议" title="扶贫会议" /></a>
+					<a href="便民信息详情.html"><img src="../img/banner/banner1.jpg" alt="扶贫会议" title="扶贫会议" /></a>
+					
+				</div>
+				<div class="slide-btn">
+					<a href="#" class="hover"></a>
+					<a href="#"></a>
+					<a href="#"></a>
+					
+				</div>
+			</div>
+		</div>
+		
+		
+	<div class="space_66 comWidth"></div>
+	<div class="intro-and-news comWidth">
+		<div class=" left-notice fl">
+			<div class="com-title ">
+				
+				<h4 class="fl">网站简介/宗旨</h4>
+				
+			</div>
+			<div class="space_12 clearfix"></div>
+			<div class="dotted_1"></div>
+			<div class="space_20"></div>
+			<p onmouseover="this.title=this.innerText;">面向新生代农民工的政务办公子系统是一个面向政府相关部门办公人员，为政府和新生代农民工提供交流和解决问题的平台，系统主要包括民工外出信息统计、农民工家庭困难帮扶、政策推送、返乡岗位推荐等功能。通过以上功能，使政府有能有一个合适的平台与农民工产生对接，为农民工提供最新的地方政策动态，作为当地企业和返乡农民工之间的桥梁为返乡农民工提供招聘信息，能更加方便的服务人民。了解农民工在外工作生活以及家庭情况，并尽可能地帮助他们解决生活中所遇到的问题。使得政府与农民工的联系更为紧密。这样在一定程度上有利于消除社会的不稳定因素，帮助社会更加顺利和谐的发展。</p>
+			
+		</div>
+		<div class="left-notice fl marginLeft_52">
+			<div class="com-title">
+				
+				<h4 class="fl">新闻资讯</h4>
+				<span class="fr"><a href="新闻资讯.html" class="link-color" target="_blank"><i class="sanjiao-icon1 "></i>more</a></span>
+			</div>
+			<div class="space_12"></div>
+			<div class="dotted_1"></div>
+			<div class="space_20"></div>
+			<div id="xinwenlist"></div>
+
+		</div>
+	</div>
+	<div class="space_80 comWidth"></div>
+	<div class="bmxx comWidth">
+		<div class="bmxx-detail fl">
+
+			<h3><span class="title">便民信息</span><span class="fr more"><a href="便民信息.html" class="link-color"><i class="sanjiao-icon1 "></i>more</a></span></h3>
+			
+			<div class="space_12"></div>
+			<div class="dotted_1"></div>
+			<div class="space_20"></div>
+			<div id="bianminlist"></div>
+
+			<div class="other-link">
+				<h4>相关链接</h4>
+				<ul>
+					<li><a href="#">链接一</a></li>
+					<li><a href="#">链接二</a></li>
+				</ul>
+				<div class="hr_1"></div>
+				<div class="erweima">
+					
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="space_42 comWidth"></div>
+	<div class="comWidth footer">
+		<p><a href="#">雅安市</a>&nbsp;&nbsp;<a href="# ">农名工政务办公子系统</a>&nbsp;&nbsp;<a href="# ">版权所有</a></p>
+		<p>Copyright&nbsp;&nbsp;&copy;&nbsp;&nbsp;2017&nbsp;.&nbsp;Yaan&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</p>
+	</div>
+		<script src="../js/banner.js" type="text/javascript"></script>
+	</body>
+</html>
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

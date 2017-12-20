@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>注册</title>
+		<link type="text/css" rel="stylesheet" href="../css/main.css" />
+		<link type="text/css" rel="stylesheet" href="../css/reset.css" />
+		<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript">
+            function Submit() {
+                var Add = {};
+                Add.name = $("#register_username").val(); //获取用户名
+                Add.pwd = $("#register_password").val();  //密码
+                Add.pwd_sure = $("#register_sure_password").val();
+                Add.email = $("#register_email").val();
+                Add.phone = $("#register_phone").val();
+                Add.type="updatepwd";
+                if (Add.name == "") {
+                    alert("请输入用户名");
+                    return;
+                }
+                if (Add.pwd == "") {
+                    alert("请输入密码");
+                    return;
+                }
+                if ($("#pwd").val() != $("#pwd_sure").val()) {
+                    alert("新密码前后输入不一致，请重新输入");
+                    return;
+                }
+                $.post("../PHP/register.PHP", Add, function (data) {
+                	
+                    if (data == "0")
+                        alert("注册失败，账号已经存在");
+                    if (data == "1") {
+                        alert("注册成功");
+                        window.location.href = 'adminList.html'
+                    }
+                    if (data == "2")
+                        alert("注册失败");
+                })
+            }
+		</script>
+	</head>
+
+	<body bgcolor="#f1f1f1">
+		<div class="header comWidth">
+			<h1>农名工政务办公子系统</h1>
+		</div>
+		<div class="nav-bar comWidth">
+			<ul class="nav-list">
+				<li><a href="index.html">首页</a>|</li>
+				<li><a href="新闻资讯.html">新闻资讯</a>|</li>
+				<li><a href="便民信息.html">便民信息</a>|</li>
+				<li><a href="问题答疑.html">问题答疑</a>|</li>
+				<li><a href="用户登录.html">用户登录</a>|</li>
+				<li><a href="管理登录.html" target="_blank">管理登录</a></li>
+			</ul>
+		</div>
+		<div class="login-container comWidth">
+		<div class="headerBar comWidth">
+			<div class="logoBar login_logo">
+				<div class="comWidth">
+					<h3 class="welcome_title">欢迎注册</h3>
+				</div>
+			</div>
+		</div>
+		<div class="comWidth clearfix">
+			<div class="regBox">
+				<div class="login_cont">
+					<ul class="login">
+						<li><span class="reg_item"><i>*</i>用户名：</span>
+							<div class="input_item"><input type="text" class="login_input" id="register_username" placeholder="请设置用户名（必填）"></div></li>
+						<li><span class="reg_item"><i>*</i>设置密码：</span>
+							<div class="input_item"><input type="password" class="login_input " id="register_password" placeholder="请设置密码（必填）"></div></li>
+						<li><span class="reg_item"><i>*</i>确认密码：</span>
+							<div class="input_item"><input type="password" class="login_input " id="register_sure_password" placeholder="请输入确认密码（必填）"></div></li>
+						<li><span class="reg_item"><i>*</i>邮箱：</span>
+							<div class="input_item"><input type="text" class="login_input " id="register_email" placeholder="请输入邮箱账号（选填）"></div></li>
+						<li><span class="reg_item"><i>*</i>电话号码：</span>
+							<div class="input_item"><input type="text" class="login_input " id="register_phone" placeholder="请输入电话号码（必填）"></div></li>
+						<li class="autoLogin"><span class="reg_item">&nbsp;</span><input type="checkbox" checked="checked" id="t1" class="checked"><label for="t1">我已阅读并且同意<a href="#" class="link-color">《用户注册协议》</a></label></li>
+						<li><span class="reg_item">&nbsp;&nbsp;</span><input type="button" value="注册"  onclick="Submit()" class="register_btn"></li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="space_42 comWidth marginTop_10"></div>
+		<div class="comWidth footer">
+		<p><a href="#">雅安市</a>&nbsp;&nbsp;<a href="# ">农名工政务办公子系统</a>&nbsp;&nbsp;<a href="# ">版权所有</a></p>
+		<p>Copyright&nbsp;&nbsp;&copy;&nbsp;&nbsp;2017&nbsp;.&nbsp;Yaan&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</p>
+	</div>
+	</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

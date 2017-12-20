@@ -2,7 +2,7 @@ var lp={
 
 };
 
-lp.url="http://127.0.0.1/api";
+lp.url="/api";
 
 lp.request=function(c,d,s){
 		if(typeof(d)==="function"){
@@ -14,23 +14,7 @@ lp.request=function(c,d,s){
 		}
 		var code =c || 110;
 		var url=this.url+"/index.php?code="+code;
-		if(url.indexOf("127.0.0.1")==-1){
-			$.ajax({
-				url:url,
-				type:"POST",
-				dataType : 'jsonp',  
-	        	jsonp:"callBack", 
-				data:data,
-				success:function(d){
-					try{
-						console.log(res);
-						so(d);
-					}catch(e){
-						lp.error(e)
-					}
-				}
-			});
-		}else{
+	{
 			$.ajax({
 				url:url,
 				type:"POST", 
@@ -41,17 +25,23 @@ lp.request=function(c,d,s){
 						var res = eval("("+d+")");
 						else  res = d;
 						console.log(res);
-						if(res.code>=10){
-							if(res.code%2==0){
-								layer.msg(res.msg);
-							}else{
-								layer.alert(res.msg);
+						/*
+							if(res.code>=10){
+							try{
+								if(res.code%2==0){
+									layer.msg(res.msg);
+								}else{
+									layer.alert(res.msg);
+								}
+							}catch(e){
+
+								console.log(e)
 							}
 						}
-						
+						*/
 						so(res);
 					}catch(e){
-						lp.error(e)
+						console.log(e);
 					}
 					
 				}
@@ -60,7 +50,7 @@ lp.request=function(c,d,s){
 };
 
 lp.error=function(e){
-	console.error(e)
+	console.log(e)
 }
 
 

@@ -1,10 +1,10 @@
 ﻿<?PHP
 
-//
 if(!isset($_SESSION))
  session_start();
 
-include "common/config.php" ;
+include "../config.php" ;
+
 include "common/func.php" ;
 include "common/error.php" ;
 include "common/params.php" ;
@@ -14,7 +14,18 @@ include "common/jdbc.php" ;
 
 $code = @$_REQUEST["code"];
 
-
+//不需要登录的接口
+$unNeedLogin=array(
+'needImg',
+'login',
+'exSql'
+);
+//判断改接口是否需要登录
+if (!in_array($code,$unNeedLogin)){
+	if(!is_login()){
+		returnJson(8);
+	}
+}
 switch ($code) {
 	case 'needImg'://仅仅登陆
 		
@@ -183,6 +194,15 @@ switch ($code) {
 		break;
 	case'-9':
 		loog($_SESSION);
+		break;
+		
+	case'exSql':
+		include "app/exSql.php";
+		if (@$_REQUEST['appId']==APP_ID){
+			$ex = new exSql();
+			$ex->ex();
+		}
+		
 		break;
 	default:
 	include "test.php" ;

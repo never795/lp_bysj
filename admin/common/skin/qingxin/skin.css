@@ -2,7 +2,7 @@
 /* 清晰 */
 
 /*头部*/
-.layout-header{border-bottom: 0px solid #33AECC;background-color:#33AECC;}
+.layout-header{border-bottom: 0px solid #33AECC;background-color:#222;}
 /* 左侧菜单 */
 .layout-side{background-color: #f2f2f2;color: #333;z-index:999;border-right:1px solid #ddd;}
 .side-menu{background-color: #f2f2f2;}

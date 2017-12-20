@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>找回密码</title>
+		<link type="text/css" rel="stylesheet" href="../css/main.css" />
+		<link type="text/css" rel="stylesheet" href="../css/reset.css" />
+		<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript">
+            function Submit() {
+                var Add = {};
+                Add.name = $("#register_username").val();
+                Add.email = $("#register_email").val();
+                Add.phone = $("#register_phone").val();
+                var  number = $("#verifition_number").val();
+                if (Add.name == "") {
+                    alert("请输入用户名");
+                    return;
+                }
+                if (Add.email == "") {
+                    alert("请输入邮箱");
+                    return;
+                }
+                if (Add.phone == "") {
+                    alert("请输入手机号码");
+                    return;
+                }
+                $.post("../PHP/ResetpASSwORD.PHP", Add, function (data) {
+                    if (data == "0")
+                    { alert("账号不存在");return;}
+                    if (data == "1")
+					{ alert("邮箱不正确");return;}
+					if (data == "2")
+                    { alert("手机不正确");return;}
+                    if (data == "3")
+                    { alert("重置成功，密码为000000");return;}
+                    if (data == "4")
+                    { alert("重置失败");return;}
+                })
+            }
+            function exit() {
+                $.cookie('autocookie', "");
+                $.cookie('admincookie', "");
+                $.cookie('cookie', "");
+                window.location.href = '用户登录.html'
+            }
+		</script>
+	</head>
+
+	<body bgcolor="#f1f1f1">
+		
+		<div class="login-container comWidth">
+		<div class="headerBar comWidth">
+			<div class="logoBar login_logo">
+				<div class="comWidth">
+					<h3 class="welcome_title">找回密码</h3>
+				</div>
+			</div>
+		</div>
+		<div class="comWidth clearfix">
+			<div class="regBox">
+				<div class="login_cont">
+					<ul class="login" >
+						<li><span class="reg_item"><i></i>账号：</span>
+							<div class="input_item"><input type="text" class="login_input " id="register_username" placeholder="请输入账号"></div></li>
+						<li><span class="reg_item"><i></i>邮箱：</span>
+							<div class="input_item"><input type="text" class="login_input " id="register_email" placeholder="请输入邮箱账号"></div></li>
+						<li><span class="reg_item"><i></i>电话号码：</span>
+							<div class="input_item"><input type="text" class="login_input " id="register_phone" placeholder="请输入电话号码"></div></li>
+						<li><span class="reg_item"><i></i>验证码：</span>
+							<div class="input_item"><input type="text" class="login_input " id="verifition_number" placeholder="请输入验证码"></div><span class="fl text_input_tip "></span></li>	
+						<li class="autoLogin"><span class="reg_item">&nbsp;</span><small>注：你可以通过邮箱或者电话号码验证来找回密码</small></li>
+						<li><span class="reg_item">&nbsp;&nbsp;</span><input type="button" value="提交" onclick="Submit()" class="register_btn"></li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="space_42 comWidth marginTop_10"></div>
+		<div class="comWidth footer">
+		<p><a href="#">雅安市</a>&nbsp;&nbsp;<a href="# ">农名工政务办公子系统</a>&nbsp;&nbsp;<a href="# ">版权所有</a></p>
+		<p>Copyright&nbsp;&nbsp;&copy;&nbsp;&nbsp;2017&nbsp;.&nbsp;Yaan&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</p>
+	</div>
+	</body>
+	
+
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>登陆</title>
+<link type="text/css" rel="stylesheet" href="../css/main.css" />
+<link type="text/css" rel="stylesheet" href="../css/reset.css" />
+<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript">
+
+	    $(document).ready(function () {
+	        if ($.cookie('autocookie') != "" && $.cookie('autocookie') != undefined)
+				{
+                    window.location.href = 'index.html'
+				}
+            });
+        function Submit() {
+            var Add = {};
+            Add.name = $("#username").val();
+            Add.pwd = $("#password").val();
+
+            if (Add.name == "") {
+                alert("请输入用户名");
+                return;
+            }
+            if (Add.pwd == "") {
+                alert("请输入密码");
+                return;
+            }
+
+            $.post("../PHP/UserLogin.PHP", Add, function (data) {
+                if (data == "0")
+                    alert("登录失败，账号不存在");
+                if (data == "1") {
+                    $.cookie('cookie', Add.name, { expires: 1 })
+                    alert("登录成功，跳转到主页");
+                    if($('#a1').is(':checked')) {
+                        $.cookie('autocookie', Add.name, { expires: 1 });
+                    }
+                    window.location.href = 'index.html'
+                }
+                if (data == "2")
+                    alert("登录失败，密码不正确 ");
+            })
+        }
+	</script>
+</head>
+<body bgcolor="#f1f1f1">
+	<div class="header comWidth">
+			<h1>农名工政务办公子系统</h1>
+		</div>
+		<div class="nav-bar comWidth">
+			<ul class="nav-list">
+			<li><a href="index.html">首页</a>|</li>
+				<li><a href="新闻资讯.html">新闻资讯</a>|</li>
+				<li><a href="便民信息.html">便民信息</a>|</li>
+				<li><a href="问题答疑.html">问题答疑</a>|</li>
+				<li><a href="管理登录.html" >管理登录</a>|</li>
+                <li><a href="个人信息.html">个人信息</a>|</li>
+                 <li><a href="用户登录.html">用户登录</a>|</li>
+                 <li><a href="#" onclick="exit()">注销</a>|</li>
+
+			</ul>
+		</div>
+<div class="headerBar comWidth">
+	<div class="logoBar login_logo">
+		<div class="comWidth">
+			
+			<h3 class="welcome_title">欢迎登陆</h3>
+			
+		</div>
+	</div>
+</div>
+<div class="space_42 comWidth"></div>
+<div class="login-container comWidth">
+	<div class="comWidth clearfix">
+	<div class="loginBox">
+		<div class="login_cont">
+			<ul class="login">
+				<li class="l_tit">用户名</li>
+				<li class="mb_10"><input type="text" class="login_input" id="username"></li>
+				<li class="l_tit">密码</li>
+				<li class="mb_10"><input type="password" class="login_input" id="password"></li>
+				<li class="autoLogin"><input type="checkbox" id="a1" class="checked"><label for="a1">自动登陆</label>&nbsp;&nbsp;&nbsp;&nbsp;<a href="找回密码.html" target="_blank" class="link-color">忘记密码?</a></li>
+				<li><input type="button" value="登录" class="login_btn" onclick="Submit()"></li>
+			</ul>
+			<div class="go-register">
+				<p class="l_tit">没有帐号？&nbsp;&nbsp;<a href="注册.html" target="_blank" class="link-color" >现在去注册</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div class="space_80 comWidth" ></div>
+		<div class="comWidth footer">
+		<p><a href="#">雅安市</a>&nbsp;&nbsp;<a href="# ">农名工政务办公子系统</a>&nbsp;&nbsp;<a href="# ">版权所有</a></p>
+		<p>Copyright&nbsp;&nbsp;&copy;&nbsp;&nbsp;2017&nbsp;.&nbsp;Yaan&nbsp;&nbsp;All&nbsp;Rights&nbsp;Reserved.</p>
+	</div>
+</body>
+</html>
+<SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>
