@@ -14,9 +14,11 @@
 <script type="text/javascript">
 var _t = lp.getParam('type');
 var darwType=lp.getParam('darwType')||"bar";
+var Xname=lp.getParam('xName')||"pro";
+
 var temp=0;
 var dat = {};
-lp.request("echarts",{type:_t},function(r){
+lp.request("echarts",{type:_t,xName:Xname},function(r){
     
     if(r.code===0){
         dat.x=[];

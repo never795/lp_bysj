@@ -24,21 +24,31 @@ class draw extends db{
 		$sql="";
 		$option=array();
 		$option['X']="省";
+		$xxx=@$_POST['xName']?$_POST['xName']:'pro'; 
+
 		switch ($type) {
 			case 'lan':
-				$sql="SELECT  pr.s,SUM(com.`land`) land FROM common com 
-				INNER JOIN v_user_pr pr ON pr.`Id`=com.`common_ID`
-				GROUP BY pr.s";
+				$sql="
+					SELECT  ".$xxx." X,COUNT(*) Y0,SUM(t.`lan_number`) Y1,AVG(t.`lan_number`) Y2  FROM v_ng_info t GROUP BY  ".$xxx."
+				";
+				$option['title']="土地面积";
+				$option['Y0']="人数";
+				$option['Y1']="总土地";
+				$option['Y2']="平均土地";
+				$option['yMnuber']=3;
+
 				break;
 			case 'salary':
 			$sql="
-				SELECT pro X,
+				SELECT ".$xxx." X,
 				COUNT(*) Y0,
 				SUM(t.`month_salary`) Y1,
 				AVG(t.`month_salary`) Y2
 				FROM v_ng_info t
-				GROUP BY pro
-			";
+				GROUP BY ".$xxx."
+						";
+
+
 			$option['title']="工资走势";
 			$option['Y0']="人数";
 			$option['Y1']="总工资";
@@ -48,35 +58,35 @@ class draw extends db{
 
 			case 'ng_number':
 			$sql="
-			SELECT t.`pro` X,COUNT(t.`ng_id`) Y0 FROM v_ng_info t GROUP BY t.`pro`
+			SELECT t.".$xxx." X,COUNT(t.`ng_id`) Y0 FROM v_ng_info t GROUP BY t.".$xxx."
 			";
-			$option['title']="各省农民工人数";
+			$option['title']="农民工人数";
 			$option['Y0']="总人数";
 			$option['yMnuber']=3;
 
 			break;
 			
 			case 'poor':
-			$sql="SELECT pro X,
+			$sql="SELECT ".$xxx." X,
 					SUM(is_poor_famlay)/COUNT(*) Y0,
 					SUM(is_poor_famlay) Y1,
 					COUNT(*) Y2
 					FROM v_ng_info
-					GROUP BY pro";
-			$option['title']="各省农民工贫困认定人数比例";
+					GROUP BY ".$xxx."";
+			$option['title']="农民工贫困认定人数比例";
 			$option['Y0']="比例";
 			$option['Y1']="认定人数";
 			$option['Y2']="总人数";
 			$option['yMnuber']=3;
 			break;
 			case 'broken':
-			$sql="SELECT pro X,
+			$sql="SELECT ".$xxx." X,
 					SUM(is_broken)/COUNT(*) Y0,
 					SUM(is_broken) Y1,
 					COUNT(*) Y2
 					FROM v_ng_info
-					GROUP BY pro";
-			$option['title']="各省单亲家庭人数比例";
+					GROUP BY ".$xxx."";
+			$option['title']="单亲家庭人数比例";
 			$option['Y0']="比例";
 			$option['Y1']="单亲家庭数";
 			$option['Y2']="总人数";
@@ -84,13 +94,13 @@ class draw extends db{
 			break;
 			case 'goHome':
 
-			$sql="SELECT pro X,
+			$sql="SELECT ".$xxx." X,
 					SUM(ng_is_yyhxgz)/COUNT(*) Y0,
 					SUM(ng_is_yyhxgz) Y1,
 					COUNT(*) Y2
 					FROM v_ng_info
-					GROUP BY pro";
-			$option['title']="各省单亲家庭人数比例";
+					GROUP BY ".$xxx."";
+			$option['title']="单亲家庭人数比例";
 			$option['Y0']="意愿回乡比例";
 			$option['Y1']="意愿回乡人数";
 			$option['Y2']="总人数";
@@ -99,7 +109,7 @@ class draw extends db{
 
 			case 'education':
 			$sql="
-				SELECT pro X,
+				SELECT ".$xxx." X,
 				COUNT(*) Y0,
 				SUM(CASE WHEN education = '1' THEN 1 ELSE 0 END) Y1,
 				SUM(CASE WHEN education = '1' THEN 1 ELSE 0 END)/COUNT(*) Y2,
@@ -116,7 +126,7 @@ class draw extends db{
 				SUM(CASE WHEN education = '7' THEN 1 ELSE 0 END) Y13,
 				SUM(CASE WHEN education = '7' THEN 1 ELSE 0 END)/COUNT(*) Y14
 				FROM v_ng_info
-				GROUP BY pro
+				GROUP BY ".$xxx."
 			";
 			$option['title']="教育";
 			$option['Y0']="总人数";

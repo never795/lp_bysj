@@ -49,10 +49,12 @@ class user extends db {
 		returnJson($res);
 	}
 
+	//添加角色
  	public function addRole(){
 		$role=array();
 		$role['lp_name']=get('n');
 		$role['lp_ext']=get('r');
+		
 		//添加到角色表
 		$res = $this->D->table($this->table_role)->add($role);
 		//关联菜单
